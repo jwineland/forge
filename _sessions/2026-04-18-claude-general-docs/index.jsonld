@@ -1,0 +1,90 @@
+{
+  "@context": "../../_vocabulary/forge-context.jsonld",
+
+  "@graph": [
+    {
+      "@id": "session:2026-04-18-claude-general-docs",
+      "@type": "Session",
+      "name": "Claude session — general_docs and Forge design",
+      "platform": "Claude Sonnet 4.5",
+      "createdAt": "2026-04-18",
+      "threads": [
+        {"@id": "thread:investment-framework"},
+        {"@id": "thread:corpus-architecture"},
+        {"@id": "thread:review-methodology"},
+        {"@id": "thread:systematization"},
+        {"@id": "thread:forge-design"},
+        {"@id": "thread:semantic-graph-intent"}
+      ]
+    },
+
+    {"@id": "thread:corpus-architecture", "@type": "Thread", "name": "Corpus architecture design"},
+    {"@id": "thread:review-methodology", "@type": "Thread", "name": "Multi-platform challenge loop"},
+    {"@id": "thread:forge-design", "@type": "Thread", "name": "Forge concept registry and lifecycle"},
+    {"@id": "thread:semantic-graph-intent", "@type": "Thread", "name": "Semantic graph and intent architecture"},
+
+    {
+      "@id": "concept:three-layer-skill-architecture",
+      "@type": "Concept",
+      "name": "Three-Layer Skill Architecture",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:corpus-architecture:skill-layer-design",
+      "promotedInto": ["https://github.com/jwineland/general_docs/tree/main/_skills"]
+    },
+    {
+      "@id": "concept:manifest-as-coherence-anchor",
+      "@type": "Concept",
+      "name": "MANIFEST as Coherence Anchor",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:corpus-architecture:manifest-design",
+      "promotedInto": ["https://github.com/jwineland/general_docs/blob/main/MANIFEST.md"]
+    },
+    {
+      "@id": "concept:intent-as-semantic-contract",
+      "@type": "Concept",
+      "name": "Intent as Semantic Contract",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:semantic-graph-intent:intent-abstraction",
+      "dependsOn": [{"@id": "concept:semantic-graph-foundation"}]
+    },
+    {
+      "@id": "concept:semantic-graph-foundation",
+      "@type": "Concept",
+      "name": "Semantic Graph Foundation",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:semantic-graph-intent:graph-design",
+      "promotedInto": ["https://github.com/jwineland/forge/blob/main/_vocabulary/forge-context.jsonld"]
+    },
+    {
+      "@id": "concept:bom-binding-locked-composition",
+      "@type": "Concept",
+      "name": "BOM-Binding and Locked Composition",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:semantic-graph-intent:manufacturing-pattern",
+      "dependsOn": [{"@id": "concept:semantic-graph-foundation"}]
+    },
+    {
+      "@id": "concept:forge-concept-lifecycle",
+      "@type": "Concept",
+      "name": "Forge Concept Lifecycle",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:forge-design:lifecycle-design",
+      "promotedInto": ["https://github.com/jwineland/forge/blob/main/MANIFEST.md"]
+    },
+    {
+      "@id": "concept:session-citation-system",
+      "@type": "Concept",
+      "name": "Session Citation System",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:forge-design:citation-design",
+      "promotedInto": ["https://github.com/jwineland/forge/blob/main/MANIFEST.md"]
+    },
+    {
+      "@id": "concept:human-ai-role-separation",
+      "@type": "Concept",
+      "name": "Human/AI Role Separation",
+      "status": "STATUS_FORMALIZED",
+      "sessionAddress": "forge:2026-04-18-claude-general-docs:forge-design:role-separation"
+    }
+  ]
+}

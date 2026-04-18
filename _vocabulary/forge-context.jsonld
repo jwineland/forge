@@ -1,0 +1,76 @@
+{
+  "_comment": "Forge JSON-LD Vocabulary Context — v0.1 — 2026-04-18 — ACTIVE DESIGN",
+  "_status": "This is a working draft. Node types and edge types are subject to change before v1.0.",
+
+  "@context": {
+    "@vocab": "https://forge.jwineland.io/vocab#",
+    "forge": "https://forge.jwineland.io/vocab#",
+    "schema": "https://schema.org/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "_nodeTypes_comment": "First-class node types in the Forge graph",
+
+    "Concept": "forge:Concept",
+    "ContentModule": "forge:ContentModule",
+    "Session": "forge:Session",
+    "Thread": "forge:Thread",
+    "Exchange": "forge:Exchange",
+    "Emergence": "forge:Emergence",
+    "LockedComposition": "forge:LockedComposition",
+    "IntentDeclaration": "forge:IntentDeclaration",
+    "OutputArtifact": "forge:OutputArtifact",
+    "Excavation": "forge:Excavation",
+    "ConceptRegistry": "forge:ConceptRegistry",
+    "ProjectCorpus": "forge:ProjectCorpus",
+    "ParkedConcept": "forge:ParkedConcept",
+
+    "_edgeTypes_comment": "Directed edge types — all take @id values",
+
+    "dependsOn": {"@id": "forge:dependsOn", "@type": "@id"},
+    "composesInto": {"@id": "forge:composesInto", "@type": "@id"},
+    "locksTo": {"@id": "forge:locksTo", "@type": "@id"},
+    "supersedes": {"@id": "forge:supersedes", "@type": "@id"},
+    "cites": {"@id": "forge:cites", "@type": "@id"},
+    "parkedBy": {"@id": "forge:parkedBy", "@type": "@id"},
+    "promotedInto": {"@id": "forge:promotedInto", "@type": "@id"},
+    "forkedFrom": {"@id": "forge:forkedFrom", "@type": "@id"},
+    "triggeredBy": {"@id": "forge:triggeredBy", "@type": "@id"},
+    "excavatedFrom": {"@id": "forge:excavatedFrom", "@type": "@id"},
+    "relatedTo": {"@id": "forge:relatedTo", "@type": "@id"},
+    "instantiates": {"@id": "forge:instantiates", "@type": "@id"},
+
+    "_propertyTypes_comment": "Scalar properties on nodes",
+
+    "name": "schema:name",
+    "summary": "dc:description",
+    "status": "forge:status",
+    "version": "schema:version",
+    "contentHash": "forge:contentHash",
+    "referenceType": "forge:referenceType",
+    "createdAt": {"@id": "schema:dateCreated", "@type": "xsd:dateTime"},
+    "sessionAddress": "forge:sessionAddress",
+    "parkTrigger": "forge:parkTrigger",
+    "parkReason": "forge:parkReason",
+    "decayPolicy": "forge:decayPolicy",
+    "promotionStatus": "forge:promotionStatus",
+    "platform": "forge:platform",
+    "threadId": "forge:threadId",
+    "exchangeNumber": "forge:exchangeNumber",
+    "emergenceNumber": "forge:emergenceNumber",
+
+    "_statusVocab_comment": "Valid values for the status property on Concept nodes",
+    "STATUS_EXCAVATED": "forge:status/excavated",
+    "STATUS_CLASSIFIED": "forge:status/classified",
+    "STATUS_FORMALIZED": "forge:status/formalized",
+    "STATUS_PARKED": "forge:status/parked",
+    "STATUS_PROMOTED": "forge:status/promoted",
+    "STATUS_FORKED": "forge:status/forked",
+    "STATUS_ARCHIVED": "forge:status/archived",
+
+    "_referenceTypeVocab_comment": "Valid values for referenceType on ContentModule nodes",
+    "REF_FLOATING": "forge:referenceType/floating",
+    "REF_LOCKED": "forge:referenceType/locked",
+    "REF_CONSTRAINED": "forge:referenceType/constrained"
+  }
+}
