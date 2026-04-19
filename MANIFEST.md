@@ -98,24 +98,37 @@ Sub-verse branching rationale: when a response is regenerated or a prompt is edi
 | `_vocabulary/forge-context.jsonld` | JSON-LD vocabulary and @context | v0.1 — active design |
 | `_vocabulary/intent-registry.md` | Named intent type definitions | Stub — needs design session |
 | `_concepts/README.md` | Concept file format and usage | Current |
-| `_concepts/three-layer-skill-architecture.md` | Formalized concept | Current |
-| `_concepts/manifest-as-coherence-anchor.md` | Formalized concept | Current |
-| `_concepts/intent-as-semantic-contract.md` | Formalized concept | Current |
-| `_concepts/forge-concept-lifecycle.md` | Formalized concept | Current |
-| `_concepts/session-citation-system.md` | Formalized concept — open question: sub-verse branching (now addressed in invariant) | Current |
-| `_concepts/bom-binding-locked-composition.md` | Formalized concept | Current |
-| `_concepts/semantic-graph-foundation.md` | Formalized concept | Current |
-| `_concepts/corpus-lifecycle-system.md` | Formalized concept | Current |
-| `_concepts/human-ai-role-separation.md` | Formalized concept | Current |
-| `_concepts/challenge-loop-methodology.md` | Formalized concept | Current |
-| `_concepts/statutory-urn-hybrid.md` | Formalized concept — from Gemini session | Current |
-| `_concepts/object-oriented-documentation.md` | Formalized concept — from Gemini session | Current |
-| `_concepts/actionable-intent-verses.md` | Formalized concept — from Gemini session | Current |
+| `_concepts/three-layer-skill-architecture.md` | Formalized concept — Claude session | Current |
+| `_concepts/manifest-as-coherence-anchor.md` | Formalized concept — Claude session | Current |
+| `_concepts/intent-as-semantic-contract.md` | Formalized concept — Claude session | Current |
+| `_concepts/forge-concept-lifecycle.md` | Formalized concept — Claude session | Current |
+| `_concepts/session-citation-system.md` | Formalized concept — Claude session | Current |
+| `_concepts/bom-binding-locked-composition.md` | Formalized concept — Claude/Gemini sessions | Current |
+| `_concepts/semantic-graph-foundation.md` | Formalized concept — Claude session | Current |
+| `_concepts/corpus-lifecycle-system.md` | Formalized concept — Claude session | Current |
+| `_concepts/human-ai-role-separation.md` | Formalized concept — Claude session | Current |
+| `_concepts/challenge-loop-methodology.md` | Formalized concept — Claude session | Current |
+| `_concepts/statutory-urn-hybrid.md` | Formalized concept — Gemini session | Current |
+| `_concepts/object-oriented-documentation.md` | Formalized concept — Gemini session | Current |
+| `_concepts/actionable-intent-verses.md` | Formalized concept — Gemini/ChatGPT sessions | Current |
+| `_concepts/conversational-concept-regression.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/concept-progression-record.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/stage-aware-guided-advancement.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/forge-guidance-engine.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/multi-model-deliberation-roles.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/capability-engineering-framework.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/world-specification.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/capability-trials.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/concept-capability-stratification.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/ai-arb-realization-system.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/forge-mobile-safe-core.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/evaluation-trust-plane.md` | Formalized concept — ChatGPT session | Current |
 | `_sessions/README.md` | Session excavation format and citation system | Current |
 | `_sessions/2026-04-18-claude-general-docs/excavation.md` | Claude session excavation | Current |
 | `_sessions/2026-04-18-claude-general-docs/index.jsonld` | Machine-readable session index | Current |
+| `_sessions/chatgpt-forge-sessions/excavation.md` | ChatGPT sessions excavation (composite) | Current |
 | `_intake/README.md` | Staging protocol for raw session content | Current |
-| `_intake/chatgpt-forge-sessions/README.md` | Landing directory for ChatGPT Forge sessions | Awaiting content |
+| `_intake/chatgpt-forge-sessions/` | ChatGPT session source files | Current — 5 files |
 | `_intake/chatgpt-forge-sessions/intake-notes.md` | Pre-annotation for ChatGPT excavation | Current |
 | `_intake/gemini-sessions/2026-04-19-gemini-citation-modality/excavation.md` | Gemini session excavation | Current |
 | `_intake/gemini-sessions/2026-04-19-gemini-citation-modality/intake-notes.md` | Gemini session intake notes | Current |
@@ -123,7 +136,8 @@ Sub-verse branching rationale: when a response is regenerated or a prompt is edi
 | `_parked/intent-registry-design.md` | Parked concept | Current |
 | `_parked/github-pages-output-pipeline.md` | Parked concept | Current |
 | `_parked/boundarymark-fitness-attestation.md` | Parked concept | Current |
-| `_parked/completeness-scoring-methodology.md` | Parked concept | Current |
+| `_parked/completeness-scoring-methodology.md` | Parked concept — still parked; canvas artifact not accessible | Current |
+| `_parked/forge-naming-and-scope.md` | Parked concept | Current |
 | `_skills/README.md` | Placeholder for corpus-skills sync | Stub |
 
 ---
@@ -132,16 +146,21 @@ Sub-verse branching rationale: when a response is regenerated or a prompt is edi
 
 | Item | Priority | Notes |
 |---|---|---|
-| Automated excavation Action | High | Currently manual; GitHub Action to trigger on conversation deposit |
-| `corpus-skills` sync Action | High | `_skills/` should sync from jwineland/corpus-skills when it exists |
-| Intent registry design | High | `_vocabulary/intent-registry.md` is a stub; needs full design session |
-| ChatGPT Forge session excavation | High | Prior ChatGPT work on completeness scoring and concept lifecycle to be deposited |
-| Completeness scoring methodology | Medium | Developed in ChatGPT sessions; needs integration with concept status model |
-| Actor tier in citation address | Medium | Whether AI platform/model should be a first-class tier or embedded in SESSION_ID — Gemini session raised this; not yet decided |
-| `inherits` edge type in vocabulary | Medium | OOD inheritance is currently mapped to `dependsOn`; may need a distinct edge type |
-| `session-citation-system` concept update | Low | Sub-verse branching open question is now addressed in invariant; concept file should note this |
-| GitHub Pages concept browser | Low | Rendered view of concept registry for navigation |
-| Cross-repo promotion Action | Medium | Automated PR creation when concept is promoted into a project repo |
+| Forge North Star artifact | Critical | A short canonical document stating what Forge is and is not. Referenced repeatedly but not yet created. |
+| Forge canonical concepts document | Critical | Curated list of concepts with canonical/provisional status. Referenced in ChatGPT sessions as a core anti-regression artifact. |
+| Forge stage model document | Critical | Clean single document describing each stage, inputs, outputs, exit criteria. Referenced in ChatGPT sessions. |
+| Forge progression rules document | High | The non-negotiable behavioral constraints. Referenced in ChatGPT sessions. |
+| Completeness scoring methodology | High | Canvas document not accessible from ChatGPT export; partial treatment in sessions. Remains parked. |
+| AI_ARB Work Item vs CPR relationship | High | Are these the same concept or distinct? Needs resolution before either is promoted to implementation. |
+| `inherits` edge type in vocabulary | Medium | OOD inheritance currently mapped to `dependsOn`; may need a distinct edge type. |
+| Actor tier in citation address | Medium | Whether AI platform/model should be a first-class tier or embedded in SESSION_ID. |
+| WRP full scope definition | Medium | What does the broader WRP building contain beyond the AI_ARB nucleus? |
+| AI Oversight vs Velocity session excavation | Medium | 796KB session not fully excavated; covers oversight/velocity tensions relevant to `human-ai-role-separation`. |
+| Automated excavation Action | High | Currently manual; GitHub Action to trigger on conversation deposit. |
+| `corpus-skills` sync Action | High | `_skills/` should sync from jwineland/corpus-skills when it exists. |
+| Intent registry design | High | `_vocabulary/intent-registry.md` is a stub; needs full design session. |
+| GitHub Pages concept browser | Low | Rendered view of concept registry for navigation. |
+| Cross-repo promotion Action | Medium | Automated PR creation when concept is promoted into a project repo. |
 
 ---
 
