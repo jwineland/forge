@@ -61,16 +61,23 @@ Exactly these states, in this progression:
 - `constrained` — resolve to version satisfying declared constraints
 
 ### Citation address format
+
 ```
-forge:SESSION_ID:THREAD_ID:EXCHANGE_N[:EMERGENCE_N]
+forge:SESSION_ID:THREAD_ID:EXCHANGE_N[:EMERGENCE_N][.BRANCH]
 ```
-Example: `forge:2026-04-18-claude-general-docs:forge-design:exchange-47:emergence-2`
+
+Example (linear): `forge:2026-04-18-claude-general-docs:forge-design:exchange-47:emergence-2`
+
+Example (branched): `forge:2026-04-19-gemini-citation-modality:urn-design:exchange-7.b`
 
 Components:
 - **SESSION_ID** — date + platform + context identifier
 - **THREAD_ID** — named topic area within the session
 - **EXCHANGE_N** — turn pair number within the thread
 - **EMERGENCE_N** — optional: specific emergence point within an exchange
+- **BRANCH** — optional: `.b`, `.c` etc. for regenerated or edited responses within the same exchange. Omit for the first/canonical response.
+
+Sub-verse branching rationale: when a response is regenerated or a prompt is edited within a session, the linear exchange number is ambiguous. The branch suffix preserves the canonical exchange address while uniquely identifying the variant. The undecorated address always refers to the first/canonical response.
 
 ### Routing rules
 - `forge this conversation` — deposits to this repo, no project scope
@@ -91,12 +98,32 @@ Components:
 | `_vocabulary/forge-context.jsonld` | JSON-LD vocabulary and @context | v0.1 — active design |
 | `_vocabulary/intent-registry.md` | Named intent type definitions | Stub — needs design session |
 | `_concepts/README.md` | Concept file format and usage | Current |
-| `_concepts/*.md` | Individual concept records | See each file |
+| `_concepts/three-layer-skill-architecture.md` | Formalized concept | Current |
+| `_concepts/manifest-as-coherence-anchor.md` | Formalized concept | Current |
+| `_concepts/intent-as-semantic-contract.md` | Formalized concept | Current |
+| `_concepts/forge-concept-lifecycle.md` | Formalized concept | Current |
+| `_concepts/session-citation-system.md` | Formalized concept — open question: sub-verse branching (now addressed in invariant) | Current |
+| `_concepts/bom-binding-locked-composition.md` | Formalized concept | Current |
+| `_concepts/semantic-graph-foundation.md` | Formalized concept | Current |
+| `_concepts/corpus-lifecycle-system.md` | Formalized concept | Current |
+| `_concepts/human-ai-role-separation.md` | Formalized concept | Current |
+| `_concepts/challenge-loop-methodology.md` | Formalized concept | Current |
+| `_concepts/statutory-urn-hybrid.md` | Formalized concept — from Gemini session | Current |
+| `_concepts/object-oriented-documentation.md` | Formalized concept — from Gemini session | Current |
+| `_concepts/actionable-intent-verses.md` | Formalized concept — from Gemini session | Current |
 | `_sessions/README.md` | Session excavation format and citation system | Current |
-| `_sessions/2026-04-18-claude-general-docs/excavation.md` | First excavation — this session | Current |
+| `_sessions/2026-04-18-claude-general-docs/excavation.md` | Claude session excavation | Current |
 | `_sessions/2026-04-18-claude-general-docs/index.jsonld` | Machine-readable session index | Current |
+| `_intake/README.md` | Staging protocol for raw session content | Current |
+| `_intake/chatgpt-forge-sessions/README.md` | Landing directory for ChatGPT Forge sessions | Awaiting content |
+| `_intake/chatgpt-forge-sessions/intake-notes.md` | Pre-annotation for ChatGPT excavation | Current |
+| `_intake/gemini-sessions/2026-04-19-gemini-citation-modality/excavation.md` | Gemini session excavation | Current |
+| `_intake/gemini-sessions/2026-04-19-gemini-citation-modality/intake-notes.md` | Gemini session intake notes | Current |
 | `_parked/README.md` | Park mechanism documentation | Current |
-| `_parked/*.md` | Individual parked concept records | See each file |
+| `_parked/intent-registry-design.md` | Parked concept | Current |
+| `_parked/github-pages-output-pipeline.md` | Parked concept | Current |
+| `_parked/boundarymark-fitness-attestation.md` | Parked concept | Current |
+| `_parked/completeness-scoring-methodology.md` | Parked concept | Current |
 | `_skills/README.md` | Placeholder for corpus-skills sync | Stub |
 
 ---
@@ -110,6 +137,9 @@ Components:
 | Intent registry design | High | `_vocabulary/intent-registry.md` is a stub; needs full design session |
 | ChatGPT Forge session excavation | High | Prior ChatGPT work on completeness scoring and concept lifecycle to be deposited |
 | Completeness scoring methodology | Medium | Developed in ChatGPT sessions; needs integration with concept status model |
+| Actor tier in citation address | Medium | Whether AI platform/model should be a first-class tier or embedded in SESSION_ID — Gemini session raised this; not yet decided |
+| `inherits` edge type in vocabulary | Medium | OOD inheritance is currently mapped to `dependsOn`; may need a distinct edge type |
+| `session-citation-system` concept update | Low | Sub-verse branching open question is now addressed in invariant; concept file should note this |
 | GitHub Pages concept browser | Low | Rendered view of concept registry for navigation |
 | Cross-repo promotion Action | Medium | Automated PR creation when concept is promoted into a project repo |
 
