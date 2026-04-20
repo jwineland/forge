@@ -46,19 +46,35 @@ This repo is the **default general concept registry**. It is the landing place f
 ## Key Invariants
 
 ### Concept status vocabulary
-Exactly these states, in this progression:
+
+Concepts progress through these primary stages:
+
 - `excavated` — extracted from conversation, not yet classified
 - `classified` — type assigned, dependencies noted
 - `formalized` — fully described with metadata complete
-- `parked` — intentionally deferred with trigger condition
-- `promoted` — promoted into a specific project corpus
-- `forked` — forked for specialized use in a project
+- `operationalized` — trialable or executable form achieved
 - `archived` — no longer actively tracked
+
+Concepts may also undergo these working transitions at any stage:
+
+- `parked` — intentionally deferred with a trigger condition; can be unparked and returned to any prior stage
+- `promoted` — routed into a specific project corpus or downstream context; promotion is a routing decision, not a maturity stage. A concept may be promoted before or after full formalization.
+- `forked` — branched for specialized use in a specific project while the original remains in the registry
+
+**Important:** Promotion is not the same as formalization. Promotion is the decision to route a concept into active use in a specific context. Formalization is the act of expressing the concept in a rigorous, canonical, and durable form. These can happen independently and in either order.
 
 ### Reference types for content modules
 - `floating` — always resolve to most current validated version
 - `locked` — resolve to specific content hash, immutable
 - `constrained` — resolve to version satisfying declared constraints
+
+### Canonical stage progression
+
+The canonical Forge stage progression for concept maturation is:
+
+**Excavation → Qualification → Rationalization → Formalization → Operationalization**
+
+Promotion, parking, and forking are working transitions that can occur at any point in this progression. They are orthogonal to maturity stage.
 
 ### Citation address format
 
@@ -123,10 +139,15 @@ Sub-verse branching rationale: when a response is regenerated or a prompt is edi
 | `_concepts/ai-arb-realization-system.md` | Formalized concept — ChatGPT session | Current |
 | `_concepts/forge-mobile-safe-core.md` | Formalized concept — ChatGPT session | Current |
 | `_concepts/evaluation-trust-plane.md` | Formalized concept — ChatGPT session | Current |
+| `_concepts/promotion-as-transition.md` | Formalized concept — ChatGPT/skills-architecture session | Current |
+| `_concepts/layered-skill-loading-architecture.md` | Formalized concept — ChatGPT/skills-architecture session | Current |
+| `_concepts/skills-context-memory-separation.md` | Formalized concept — ChatGPT/skills-architecture session | Current |
 | `_sessions/README.md` | Session excavation format and citation system | Current |
 | `_sessions/2026-04-18-claude-general-docs/excavation.md` | Claude session excavation | Current |
 | `_sessions/2026-04-18-claude-general-docs/index.jsonld` | Machine-readable session index | Current |
 | `_sessions/chatgpt-forge-sessions/excavation.md` | ChatGPT sessions excavation (composite) | Current |
+| `_sessions/2026-04-19-chatgpt-skills-architecture/excavation.md` | ChatGPT skills architecture session excavation | Current |
+| `_sessions/2026-04-19-chatgpt-skills-architecture/index.jsonld` | Machine-readable session index | Current |
 | `_intake/README.md` | Staging protocol for raw session content | Current |
 | `_intake/chatgpt-forge-sessions/` | ChatGPT session source files | Current — 5 files |
 | `_intake/chatgpt-forge-sessions/intake-notes.md` | Pre-annotation for ChatGPT excavation | Current |
@@ -154,17 +175,17 @@ Capability Engineering (CE) is one consumer of Forge — a rich consumer because
 
 Structural consequence: `_capabilities/`, `_worlds/`, `_invariants/`, `_trials/`, `_evidence/` directories and CE-specific rubric artifacts belong in a CE corpus template, not in this repo. The Forge North Star and all control layer documents must use domain-spanning examples and language, not CE-centric framing. CE may appear as one example alongside others.
 
-This decision was triggered by reading the 12 CE concepts excavated from the ChatGPT sessions and recognizing that their presence in the registry could cause the next session to treat Forge as CE-specific.
-
 **Forge stages are the progression spine — Operationalization is the handoff point to consumer domains**
 
-The canonical Forge stage progression (Excavation → Qualification → Rationalization → Promotion → Formalization → Operationalization) is domain-agnostic through Formalization. Operationalization is the stage where a concept becomes trialable or executable — and that is where Forge hands off to domain-specific consumer machinery. The CE Trial/Evidence/Refinement loop is one form of post-Operationalization work; other domains will have different forms.
+The canonical Forge stage progression (Excavation → Qualification → Rationalization → Formalization → Operationalization) is domain-agnostic. Operationalization is the stage where a concept becomes trialable or executable — and that is where Forge hands off to domain-specific consumer machinery.
 
-Operationalization itself remains in Forge as a stage, but what happens after it is domain-specific.
+**Promotion is a routing transition, not a maturity stage**
+
+Promotion was previously listed as a step in the canonical stage sequence between Rationalization and Formalization. This was incorrect. Promotion is the decision to route a concept into active use in a specific project corpus or downstream context. It is orthogonal to maturity — a concept can be promoted at any stage and can be promoted before or after full formalization. The canonical stage sequence is Excavation → Qualification → Rationalization → Formalization → Operationalization. Promotion, parking, and forking are working transitions that can occur at any point. This distinction was identified and formalized during the 2026-04-19 ChatGPT skills architecture session and the associated README rewrite (PR #5).
 
 **CE concepts are correctly placed in `_concepts/` as design knowledge**
 
-The presence of CE-focused concepts in the Forge concept registry is appropriate. They represent knowledge about how CE works that Forge has captured and may promote into a CE corpus template. This is the same as how `general_docs` investment framework concepts could be captured here — Forge is a registry of knowledge, not a filter that excludes non-Forge-Core topics. The distinction is between concepts as knowledge (belongs here) and structural artifacts implementing CE (belongs in a CE template).
+The presence of CE-focused concepts in the Forge concept registry is appropriate. They represent knowledge about how CE works that Forge has captured and may promote into a CE corpus template. Forge is a registry of knowledge, not a filter that excludes non-Forge-Core topics. The distinction is between concepts as knowledge (belongs here) and structural artifacts implementing CE (belongs in a CE template).
 
 ---
 
@@ -174,15 +195,17 @@ The presence of CE-focused concepts in the Forge concept registry is appropriate
 |---|---|---|
 | Forge North Star artifact | Critical | A short canonical document stating what Forge is and is not. Must use domain-spanning examples, not CE-centric framing. |
 | Forge canonical concepts document | Critical | Curated list of concepts with canonical/provisional status. Referenced in ChatGPT sessions as a core anti-regression artifact. |
-| Forge stage model document | Critical | Clean single document describing each stage, inputs, outputs, exit criteria. Referenced in ChatGPT sessions. |
+| Forge stage model document | Critical | Clean single document describing each stage, inputs, outputs, exit criteria. Must reflect promotion-as-transition decision. |
 | Forge progression rules document | High | The non-negotiable behavioral constraints. Referenced in ChatGPT sessions. |
 | Completeness scoring methodology | High | Canvas document not accessible from ChatGPT export; partial treatment in sessions. Remains parked. |
 | AI_ARB Work Item vs CPR relationship | High | Are these the same concept or distinct? Needs resolution before either is promoted to implementation. |
+| `corpus-skills` repo creation | High | Shared reusable skills need a canonical home; `jwineland/corpus-skills` does not yet exist. |
+| Repo hook convention | High | Common convention for AGENTS.md, MANIFEST.md, _skills/, _context/, _memory/ was sketched but not formalized. |
 | `inherits` edge type in vocabulary | Medium | OOD inheritance currently mapped to `dependsOn`; may need a distinct edge type. |
 | Actor tier in citation address | Medium | Whether AI platform/model should be a first-class tier or embedded in SESSION_ID. |
 | WRP full scope definition | Medium | What does the broader WRP building contain beyond the AI_ARB nucleus? |
 | AI Oversight vs Velocity session excavation | Medium | 796KB session not fully excavated; covers oversight/velocity tensions relevant to `human-ai-role-separation`. |
-| CE corpus template | Medium | A dedicated corpus template for Capability Engineering work. Will contain `_capabilities/`, `_worlds/`, `_invariants/`, `_trials/` structure and CE rubrics. Separate from Forge Core. |
+| CE corpus template | Medium | A dedicated corpus template for Capability Engineering work. Separate from Forge Core. |
 | Automated excavation Action | High | Currently manual; GitHub Action to trigger on conversation deposit. |
 | `corpus-skills` sync Action | High | `_skills/` should sync from jwineland/corpus-skills when it exists. |
 | Intent registry design | High | `_vocabulary/intent-registry.md` is a stub; needs full design session. |
