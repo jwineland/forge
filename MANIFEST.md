@@ -142,11 +142,37 @@ Sub-verse branching rationale: when a response is regenerated or a prompt is edi
 
 ---
 
+## Design Decisions
+
+These are the significant structural choices made during Forge development, recorded here so that future sessions do not relitigate them without awareness of the prior reasoning.
+
+**Forge is domain-agnostic — Capability Engineering is a consumer, not a component**
+
+Forge is a general-purpose knowledge lifecycle system. It applies equally to investment assessment, product strategy, policy analysis, creative work, legal reasoning, engineering, and any other domain where valuable concepts emerge from conversation and need to be preserved, matured, and made reusable. Forge's stages, the CPR, the Guidance Engine, and the citation system are domain-agnostic mechanisms.
+
+Capability Engineering (CE) is one consumer of Forge — a rich consumer because the Operationalization stage maps well onto capability specification and trial-based validation, but a consumer nonetheless. The CE concepts in `_concepts/` (capability-engineering-framework, world-specification, capability-trials, etc.) belong here as formalized design knowledge that Forge has captured and can promote into a CE corpus template. Their presence does not make Forge a CE system.
+
+Structural consequence: `_capabilities/`, `_worlds/`, `_invariants/`, `_trials/`, `_evidence/` directories and CE-specific rubric artifacts belong in a CE corpus template, not in this repo. The Forge North Star and all control layer documents must use domain-spanning examples and language, not CE-centric framing. CE may appear as one example alongside others.
+
+This decision was triggered by reading the 12 CE concepts excavated from the ChatGPT sessions and recognizing that their presence in the registry could cause the next session to treat Forge as CE-specific.
+
+**Forge stages are the progression spine — Operationalization is the handoff point to consumer domains**
+
+The canonical Forge stage progression (Excavation → Qualification → Rationalization → Promotion → Formalization → Operationalization) is domain-agnostic through Formalization. Operationalization is the stage where a concept becomes trialable or executable — and that is where Forge hands off to domain-specific consumer machinery. The CE Trial/Evidence/Refinement loop is one form of post-Operationalization work; other domains will have different forms.
+
+Operationalization itself remains in Forge as a stage, but what happens after it is domain-specific.
+
+**CE concepts are correctly placed in `_concepts/` as design knowledge**
+
+The presence of CE-focused concepts in the Forge concept registry is appropriate. They represent knowledge about how CE works that Forge has captured and may promote into a CE corpus template. This is the same as how `general_docs` investment framework concepts could be captured here — Forge is a registry of knowledge, not a filter that excludes non-Forge-Core topics. The distinction is between concepts as knowledge (belongs here) and structural artifacts implementing CE (belongs in a CE template).
+
+---
+
 ## Known Gaps and Future Work
 
 | Item | Priority | Notes |
 |---|---|---|
-| Forge North Star artifact | Critical | A short canonical document stating what Forge is and is not. Referenced repeatedly but not yet created. |
+| Forge North Star artifact | Critical | A short canonical document stating what Forge is and is not. Must use domain-spanning examples, not CE-centric framing. |
 | Forge canonical concepts document | Critical | Curated list of concepts with canonical/provisional status. Referenced in ChatGPT sessions as a core anti-regression artifact. |
 | Forge stage model document | Critical | Clean single document describing each stage, inputs, outputs, exit criteria. Referenced in ChatGPT sessions. |
 | Forge progression rules document | High | The non-negotiable behavioral constraints. Referenced in ChatGPT sessions. |
@@ -156,6 +182,7 @@ Sub-verse branching rationale: when a response is regenerated or a prompt is edi
 | Actor tier in citation address | Medium | Whether AI platform/model should be a first-class tier or embedded in SESSION_ID. |
 | WRP full scope definition | Medium | What does the broader WRP building contain beyond the AI_ARB nucleus? |
 | AI Oversight vs Velocity session excavation | Medium | 796KB session not fully excavated; covers oversight/velocity tensions relevant to `human-ai-role-separation`. |
+| CE corpus template | Medium | A dedicated corpus template for Capability Engineering work. Will contain `_capabilities/`, `_worlds/`, `_invariants/`, `_trials/` structure and CE rubrics. Separate from Forge Core. |
 | Automated excavation Action | High | Currently manual; GitHub Action to trigger on conversation deposit. |
 | `corpus-skills` sync Action | High | `_skills/` should sync from jwineland/corpus-skills when it exists. |
 | Intent registry design | High | `_vocabulary/intent-registry.md` is a stub; needs full design session. |
