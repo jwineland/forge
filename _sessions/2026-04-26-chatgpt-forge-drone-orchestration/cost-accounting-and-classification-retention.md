@@ -1,6 +1,6 @@
 # Design Note: Retaining Cost Accounting and Classification from the Original Session
 
-**Status:** Design retention note requiring review  
+**Document type:** Design retention note requiring review  
 **Date:** 2026-04-26  
 **Related session:** `2026-04-26-chatgpt-forge-drone-orchestration`  
 **Purpose:** Verify that the original cost-accounting and usage-classification ideas that started this session remain preserved after later review emphasis shifted toward Atlas, federation, and drones.
@@ -47,19 +47,21 @@ Preserve high-value frontier reasoning while avoiding accidental metered frontie
 
 The following usage classes should remain in the design model.
 
-| Usage class | Description | Primary cost driver | Likely accounting unit |
-|---|---|---|---|
-| Quick chat | Small question/answer, no artifacts | output tokens | conversation/thread |
-| Design discussion | Planning, reasoning, architecture exploration | reasoning + context | design session |
-| Authority-doc cycle | Full or near-full document review/update/re-review | repeated large input | artifact cycle |
-| Modular design packet review | Bounded context packet reviewed by frontier model | curated packet + reasoning | packet review |
-| Atlas/global coherence review | Whole-design compressed survey | Atlas digest + frontier reasoning | Atlas review cycle |
-| GitHub/MCP retrieval cycle | Model gathers repo/design context through tools | files read + summaries + tool output | tool cycle |
-| Design rationalization | Resolve conflicts, weave concepts, formalize decisions | reasoning + selected context | rationalization cycle |
-| Implementation planning | Convert design into plan/tasks/tests | design packet + output | plan cycle |
-| Prompt/handoff generation | Produce Codex/Claude Code/Cline prompts | context compression + output | handoff artifact |
-| Implementation-agent work | Codex/Claude Code/Cline execution | repo reads, tool calls, test output | implementation session |
-| Verification/reconciliation | Compare output to frozen design intent | diffs + plan + Atlas links | verification cycle |
+The `Performed by` column distinguishes human-mediated work (subscription surface, no automation cost beyond the subscription) from drone-mediated work (incurs API or local compute cost). This matters for ledger attribution: the same work class can appear in different ledgers depending on who performs it.
+
+| Usage class | Description | Primary cost driver | Likely accounting unit | Performed by |
+|---|---|---|---|---|
+| Quick chat | Small question/answer, no artifacts | output tokens | conversation/thread | Human (subscription) |
+| Design discussion | Planning, reasoning, architecture exploration | reasoning + context | design session | Human (subscription) |
+| Authority-doc cycle | Full or near-full document review/update/re-review | repeated large input | artifact cycle | Human (subscription) |
+| Modular design packet review | Bounded context packet reviewed by frontier model | curated packet + reasoning | packet review | Human (subscription) or Frontier critic drone (Red) |
+| Atlas/global coherence review | Whole-design compressed survey | Atlas digest + frontier reasoning | Atlas review cycle | Human (subscription) or Frontier design court drone (Black) |
+| GitHub/MCP retrieval cycle | Model gathers repo/design context through tools | files read + summaries + tool output | tool cycle | Human (subscription) or Retrieval/Index drone (Green/Yellow) |
+| Design rationalization | Resolve conflicts, weave concepts, formalize decisions | reasoning + selected context | rationalization cycle | Human (subscription) |
+| Implementation planning | Convert design into plan/tasks/tests | design packet + output | plan cycle | Human (subscription) or Plan-normalizer drone (Yellow) |
+| Prompt/handoff generation | Produce Codex/Claude Code/Cline prompts | context compression + output | handoff artifact | Human (subscription) or Handoff drone (Yellow) |
+| Implementation-agent work | Codex/Claude Code/Cline execution | repo reads, tool calls, test output | implementation session | Execution drone (Yellow/Red) |
+| Verification/reconciliation | Compare output to frozen design intent | diffs + plan + Atlas links | verification cycle | Verification drone (Yellow) or Human review |
 
 This classification should survive any later schema design. Exact token estimates may change, but these work modes are central to understanding the user's cost profile.
 
@@ -90,44 +92,53 @@ These classes should apply to:
 
 ## 5. Subscription/API/Local Ledger Model
 
-The design should distinguish three different economic ledgers.
+The design should distinguish three different economic ledgers. Ledgers 5.1 and 5.3 record **actual money spent**. Ledger 5.2 is a **hypothetical estimate** — it does not represent money spent, only what the same work would have cost under a different billing model.
 
 ### 5.1 Actual subscription spend
+
+*Type: actual expenditure.*
 
 Actual monthly spend for subscription surfaces, such as ChatGPT Pro, Codex subscription access, Claude Pro/Max, Claude Code subscription use, etc.
 
 This ledger answers:
 
 ```text
-What did the user actually pay?
+What did the user actually pay for subscription access?
 ```
 
 ### 5.2 API-equivalent estimate
 
-Estimated cost if the same work had been performed through metered APIs.
+*Type: hypothetical / counterfactual estimate — not actual spend.*
+
+Estimated cost if the same subscription-surface work had been performed through metered APIs instead. This is a planning and value-assessment tool, not an invoice.
 
 This ledger answers:
 
 ```text
-What would this likely have cost through API billing?
+What would the subscription-surface work likely have cost if billed by token?
+(Used to validate that subscription pricing is economically favorable for this usage pattern.)
 ```
 
 ### 5.3 Automation/API logistics spend
 
-Actual API spend for low-cost drones, local-fallback escalation, dispatch automation, summarization, validation, and other utility work.
+*Type: actual expenditure.*
+
+Actual API spend for low-cost drones, local-fallback escalation, dispatch automation, summarization, validation, and other utility work. This is real money billed, not an estimate.
 
 This ledger answers:
 
 ```text
-How much did automation cost to reduce human message-bus burden?
+How much did automation actually cost to reduce human message-bus burden?
 ```
 
 Together:
 
 ```text
-Total actual cost = subscription spend + automation/API logistics spend + local infrastructure amortization if tracked
+Total actual cost = ledger 5.1 (subscription) + ledger 5.3 (automation) + local infrastructure amortization if tracked
 
-Estimated value = API-equivalent estimate of subscription-surface work + API-equivalent estimate of implementation work avoided/contained
+Counterfactual comparison = ledger 5.2 (what 5.1 work would cost via API) vs. ledger 5.1 (what was actually paid)
+
+Net automation value = work avoided or accelerated by drones, measured against ledger 5.3 spend
 ```
 
 ---
@@ -186,9 +197,9 @@ old full doc tokens vs. new modular packet tokens
 It is:
 
 ```text
-old full-authority cycles
+old full-authority cycles (ledger 5.2 equivalent)
 vs.
-Atlas maintenance + packet work + periodic global coherence reviews
+Atlas maintenance drone spend (ledger 5.3) + packet work + periodic global coherence reviews (ledger 5.1 or 5.3)
 ```
 
 The tracker should eventually measure whether Atlas reduces total API-equivalent cost while preserving or improving global coherence.
@@ -233,8 +244,8 @@ Drones should not be evaluated only by capability. They should also be evaluated
 | Drift drone | Green/Yellow | Detect risk before expensive review |
 | Handoff drone | Yellow | Reduce manual transfer/error burden |
 | Verification drone | Yellow | Avoid expensive rework and incoherence |
-| Frontier critic | Red | High-quality design challenge |
-| Frontier design court | Red/Black | Multi-model high-reasoning adjudication |
+| Frontier critic | Red | High-quality single-model design challenge over a bounded packet |
+| Frontier design court | Black | Multi-model high-reasoning adjudication — by definition involves multiple frontier models over large context, which is the Black class definition |
 | Implementation drone | Yellow/Red | Execute plans, depending on model/scope |
 
 The Cost Governor drone is therefore not optional long-term. It is the mechanism that prevents the operational layer from defeating the subscription/API hybrid cost strategy.
@@ -258,9 +269,9 @@ No implementation is authorized by this note. However, future cost logging likel
 | `estimatedInputTokens` | approximate or exact if available |
 | `estimatedCachedInputTokens` | if known or estimated |
 | `estimatedOutputTokens` | approximate or exact if available |
-| `actualApiCost` | known for direct API work |
-| `apiEquivalentEstimate` | estimated for subscription/local work |
-| `confidence` | visible-only, likely, high, exact, unknown |
+| `actualApiCost` | known for direct API work; null for subscription-surface work |
+| `apiEquivalentEstimate` | estimated for subscription/local work; null for direct API work with known actual cost |
+| `confidence` | `ui-observed` (session visible in UI, no token data), `likely` (rough estimate from usage patterns), `high` (close approximation), `exact` (from API logs with actual token counts), `unknown` |
 | `approvalStatus` | auto, human-approved, exceptional |
 | `valueOutcome` | preserved concept, rationalized design, plan, handoff, PR, verification |
 
@@ -279,7 +290,7 @@ Yes, but it had become distributed across several documents:
 | Subscription cognition + API/local logistics | `excavation.md`, `engineer-orientation.md`, this note |
 | Green/Yellow/Red/Black cost governance | `excavation.md`, `engineer-orientation.md`, this note |
 | Local-first escalation | `excavation.md`, `engineer-orientation.md`, this note |
-| API billing estimator artifact | `index.jsonld`, `excavation.md`; still unpreserved |
+| API billing estimator artifact | `index.jsonld` (outputArtifacts), `excavation.md` (parked items); prototype still unpreserved |
 | Atlas as replacement for authority-doc cycling | `global-coherence-map-note.md`, `design-atlas-related-work-survey.md`, this note |
 | Project-local/federated accounting scope | `federated-graphs-and-project-local-forge.md`, this note |
 

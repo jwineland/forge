@@ -1,6 +1,6 @@
 # Consolidated Review Prompts: Drone Orchestration, Atlas, Federation, and Cost Governance
 
-**Status:** Review index for multi-model and human challenge loops  
+**Document type:** Review orchestration index for multi-model and human challenge loops  
 **Date:** 2026-04-26  
 **Related session:** `2026-04-26-chatgpt-forge-drone-orchestration`  
 **Purpose:** Consolidate review prompts scattered across the session capture so reviewers can evaluate the design as a coherent review packet.
@@ -22,7 +22,7 @@ Primary source files:
 
 ---
 
-## 2. Review Prompt A — Forge Identity and Architectural Fit
+## Prompt A — Forge Identity and Architectural Fit
 
 > Review the proposed Forge drone/worker orchestration layer. Does it fit Forge's stated identity as a semantic knowledge lifecycle system, or does it overextend Forge into general agent orchestration? Identify which parts belong in Forge Core, which parts belong in a downstream Forge Operations package, which parts belong in project-local `.forge/` layers, and which parts should remain parked.
 
@@ -35,21 +35,21 @@ Specific questions:
 
 ---
 
-## 3. Review Prompt B — Concept Rationalization
+## Prompt B — Concept Rationalization
 
 > Compare the candidate concepts from this session against existing Forge concepts such as `human-ai-role-separation`, `challenge-loop-methodology`, `multi-model-deliberation-roles`, `forge-guidance-engine`, `evaluation-trust-plane`, `manifest-as-coherence-anchor`, and `semantic-graph-foundation`. Which concepts are genuinely new, which are refinements, and which are duplicate framings?
 
 Specific rationalization tasks:
 
-1. Resolve the boundary between `forge-housekeeping-workers` and `forge-drone-coordination-layer`.
+1. Resolve the boundary between `forge-housekeeping-workers` and `forge-drone-coordination-layer`. **Note:** both concepts carry explicit `rationalizationNote` flags in `index.jsonld` blocking promotion to Qualification until this boundary is resolved. This is a named pre-promotion gate, not merely an open question.
 2. Confirm whether `human-as-message-bus` is a design pressure, anti-pattern, or concept.
-3. Confirm whether `subscription-cognition-api-logistics` is the architectural response to `human-as-message-bus`.
-4. Determine whether `github-as-shared-state-substrate` is the correct concept name.
-5. Determine whether `bounded-context-packet` and `design-packet-freeze` are distinct concepts.
+3. Confirm whether `subscription-cognition-api-logistics` is the architectural response to `human-as-message-bus`. (An explicit `motivatedBy` link is recorded in `index.jsonld`.)
+4. Determine whether `github-as-shared-state-substrate` is the correct concept name, given that the prior name `github-as-drone-message-bus` was semantically inverted. (Name rationale is recorded in `index.jsonld`.)
+5. Determine whether `bounded-context-packet` and `design-packet-freeze` are distinct concepts or should be merged.
 
 ---
 
-## 4. Review Prompt C — Economic and Cost-Class Model
+## Prompt C — Economic and Cost-Class Model
 
 > Evaluate the proposed cost accounting and cost-class governance model. Does it preserve the original motivation of the session: understanding subscription-vs-API economics while designing a hybrid workflow that avoids uncontrolled frontier-model API spend?
 
@@ -65,7 +65,7 @@ Specific questions:
 
 ---
 
-## 5. Review Prompt D — Design Atlas / Global Coherence
+## Prompt D — Design Atlas / Global Coherence
 
 > Review the Design Atlas proposal as a response to the loss of whole-authority-document global review after modularization. Is Atlas a distinct first-class artifact, a graph projection, a MANIFEST extension, a project-scoped guidance object, or a hybrid?
 
@@ -84,7 +84,7 @@ Note: completeness/coverage reporting is explicitly blocked on parked `completen
 
 ---
 
-## 6. Review Prompt E — Federation and Project-Local Forge Layers
+## Prompt E — Federation and Project-Local Forge Layers
 
 > Review the proposed federated graph / project-local Forge model. How should the primary Forge registry relate to project-local graphs, manifests, atlases, implementation plans, prompt handoffs, and implementation evidence?
 
@@ -101,7 +101,7 @@ Specific questions:
 
 ---
 
-## 7. Review Prompt F — Prompt Generation and Dispatch
+## Prompt F — Prompt Generation and Dispatch
 
 > Review prompt generation and dispatch as first-class Forge concerns. Does the design adequately address the user's role as human message bus across ChatGPT, Codex, Claude Code, GitHub, local files, and future tooling?
 
@@ -116,7 +116,7 @@ Specific questions:
 
 ---
 
-## 8. Review Prompt G — Local-First Drones and Escalation
+## Prompt G — Local-First Drones and Escalation
 
 > Assess the proposal to use local compute, including laptop CPU and future GB10-class resources, for housekeeping drones before escalating to API or subscription frontier models.
 
@@ -131,7 +131,7 @@ Specific questions:
 
 ---
 
-## 9. Review Prompt H — MVP Scope
+## Prompt H — MVP Scope
 
 > Evaluate the proposed five-drone MVP: Index, Packet, Handoff, Verification, and Cost Governor. Is this the right minimal set to remove the user as human message bus for one design-to-implementation handoff workflow?
 
@@ -146,7 +146,7 @@ Specific questions:
 
 ---
 
-## 10. Review Prompt I — Drift, Trust, and Evaluation
+## Prompt I — Drift, Trust, and Evaluation
 
 > Propose a rubric for reviewing Atlas/project-local Forge state for global design coherence and implementation drift.
 
@@ -161,7 +161,7 @@ Specific questions:
 
 ---
 
-## 11. Review Prompt J — Merge and Follow-Up Strategy
+## Prompt J — Merge and Follow-Up Strategy
 
 > Assess whether this PR should merge as design-capture baseline, remain draft pending additional model review, or be split into follow-up PRs.
 
@@ -169,18 +169,19 @@ Specific questions:
 
 1. Is the material sufficiently preserved for merge as design input?
 2. Which topics require separate rationalization PRs?
-3. Which candidate concepts should be promoted to Qualification first?
+3. Which candidate concepts should be promoted to Qualification first? (Note: `forge-housekeeping-workers` and `forge-drone-coordination-layer` are explicitly gated — their boundary must be resolved before either can advance.)
 4. Which parked concepts block near-term design work?
 5. What issue(s) should be opened after this PR merges?
 
 ---
 
-## 12. Current Recommended Review Order
+## 2. Current Recommended Review Order
 
-1. Engineer orientation for project context.
-2. Excavation for session summary and candidate concepts.
-3. Cost accounting retention note for original motivation.
-4. Global coherence map note for the core modularization risk.
-5. Design Atlas related-work survey for prior concept synthesis.
-6. Federated graphs/project-local Forge note for cross-repo architecture.
-7. This review prompt index for multi-model challenge loops.
+1. `engineer-orientation.md` — project context and canonical stage vocabulary.
+2. `excavation.md` — session summary, candidate concepts, and rationalization notes.
+3. `cost-accounting-and-classification-retention.md` — original session motivation and three-ledger cost model.
+4. `global-coherence-map-note.md` — core modularization coherence risk.
+5. `design-atlas-related-work-survey.md` — prior concept synthesis and Atlas component analysis.
+6. `federated-graphs-and-project-local-forge.md` — cross-repo architecture and federation model.
+7. `index.jsonld` — machine-readable session record with concept metadata, rationalization flags, and citation quality.
+8. This file — multi-model challenge loop prompts.

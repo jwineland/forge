@@ -12,6 +12,48 @@
   "citationQuality": "approximate",
   "citationQualityNote": "Exchange numbers are reconstructed from a session summary, not a full transcript import. Thread-level citations are reliable. Exchange-level citations should be treated as approximate until transcript-exact data is available.",
   "status": "design-input-for-review",
+  "sessionDocuments": [
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/excavation.md",
+      "role": "primary-excavation",
+      "description": "Session summary, candidate concepts, drone class proposals, cost-class governance, and core design observations"
+    },
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/index.jsonld",
+      "role": "machine-readable-index",
+      "description": "JSON-LD session record: concepts, threads, citations, rationalization flags, open questions, and deferred items"
+    },
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/engineer-orientation.md",
+      "role": "orientation",
+      "description": "Human-engineer orientation: Forge baseline, canonical lifecycle stages, GitHub as shared state substrate, implementation status"
+    },
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/global-coherence-map-note.md",
+      "role": "design-note",
+      "description": "Design pressure: global coherence loss after authority-document decomposition; candidate Global Coherence Map / Design Atlas requirement"
+    },
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/design-atlas-related-work-survey.md",
+      "role": "related-work-survey",
+      "description": "Survey of existing Forge concepts related to Design Atlas; component table with completeness/coverage blocker flag"
+    },
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/federated-graphs-and-project-local-forge.md",
+      "role": "design-note",
+      "description": "Federated graph / project-local Forge layer model; artifact immutability policy; YAML-vs-JSON-LD format note"
+    },
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/cost-accounting-and-classification-retention.md",
+      "role": "retention-note",
+      "description": "Preserves original session cost-accounting ideas: three-ledger model, usage classification, Green/Yellow/Red/Black governance, session-based accounting"
+    },
+    {
+      "path": "_sessions/2026-04-26-chatgpt-forge-drone-orchestration/review-prompts.md",
+      "role": "review-index",
+      "description": "Consolidated multi-model and human challenge loop prompts (A-J) with recommended review order"
+    }
+  ],
   "threads": [
     {
       "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:subscription-api-equivalence",

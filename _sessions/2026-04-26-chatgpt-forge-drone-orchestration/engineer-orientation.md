@@ -373,18 +373,20 @@ Suggested review tasks:
 1. Read `MANIFEST.md`.
 2. Read `_sessions/README.md`.
 3. Read this orientation document.
-4. Read `excavation.md` in this same session directory.
-5. Review whether the proposed drone layer belongs in Forge Core, a Forge Operations package, or project-specific tooling.
-6. Identify the smallest useful schema set for:
+4. Read `excavation.md` in this same session directory — session summary, candidate concepts, and rationalization notes including pre-promotion gates on overlapping concepts.
+5. Read `cost-accounting-and-classification-retention.md` in this session directory — the original cost-architecture motivation, three-ledger model, and usage classification scheme.
+6. Read `review-prompts.md` in this session directory — consolidated challenge-loop prompts (A–J) and recommended review order for multi-model review.
+7. Review whether the proposed drone layer belongs in Forge Core, a Forge Operations package, or project-specific tooling.
+8. Identify the smallest useful schema set for:
    - design packet
    - drone job
    - prompt/handoff artifact
    - implementation plan
    - review/challenge output
-7. Propose an MVP implementation sequence that preserves current Forge invariants.
-8. Identify which work should remain file-based vs. move to database/graph storage.
-9. Identify which parts should be local-first, API-backed, or subscription-mediated.
-10. Challenge whether `drone` is the right abstraction/vocabulary.
+9. Propose an MVP implementation sequence that preserves current Forge invariants.
+10. Identify which work should remain file-based vs. move to database/graph storage.
+11. Identify which parts should be local-first, API-backed, or subscription-mediated.
+12. Challenge whether `drone` is the right abstraction/vocabulary.
 
 ---
 
