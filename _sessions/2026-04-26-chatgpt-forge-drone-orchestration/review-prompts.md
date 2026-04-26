@@ -20,6 +20,13 @@ Primary source files:
 - `federated-graphs-and-project-local-forge.md`
 - `cost-accounting-and-classification-retention.md`
 
+Foundational concepts on main that inform this review:
+
+- `_concepts/capability-engineering-framework.md`
+- `_concepts/world-specification.md`
+- `_concepts/capability-trials.md`
+- `_concepts/actionable-intent-verses.md`
+
 ---
 
 ## Prompt A — Forge Identity and Architectural Fit
@@ -175,13 +182,32 @@ Specific questions:
 
 ---
 
+## Prompt K — Capability Engineering Layer Integration
+
+> Review the proposed drone handoff and verification design in relation to the existing formalized Forge concepts: `capability-engineering-framework`, `world-specification`, and `capability-trials`. These concepts are formalized on main. The drone design should connect to this layer rather than design a parallel verification mechanism.
+
+Background: the capability engineering framework defines six objects — Capability, World, Invariant, Trial, Evidence, Refinement — that already constitute the theoretical foundation for implementation handoff and verification. The world specification defines the three-drift diagnostic (implementation/design/world drift). The capability-trials concept defines the spec-first principle and identifies the self-confirming loop as a named failure mode.
+
+Specific questions:
+
+1. Should handoff artifacts be **Capability Trial Packs** rather than prose prompts? The execution drone's instruction would then be "make all trials in this pack pass" rather than "build me a thing."
+2. Should the verification drone's mechanism be **Capability Trial execution against a World Specification**, not generic test running?
+3. Does the **spec-first principle** (trials authored and human-approved before execution agent is dispatched) need to be encoded as a named Forge workflow gate? What enforces it?
+4. Should **Gherkin** (Given/When/Then) be adopted as the canonical expression format for Capability Trial Packs? This connects `actionable-intent-verses` (Narrative/Intent split) with the trial pack structure and would be the trial expression format open question in `capability-trials`.
+5. How does the **three-drift diagnostic framework** (implementation drift, design drift, world drift) govern the verification drone's failure analysis and Refinement routing?
+6. What is the minimum **World Specification** required before a handoff drone can be dispatched? Can a trial pack exist without a backing World Specification, or is a world spec a prerequisite?
+7. Should `capability-trials` be updated to formally adopt Gherkin as the trial expression format before the first drone trial pack schema is designed? (A candidate update is already present as an open question in `capability-trials` on main.)
+
+---
+
 ## 2. Current Recommended Review Order
 
-1. `engineer-orientation.md` — project context and canonical stage vocabulary.
-2. `excavation.md` — session summary, candidate concepts, and rationalization notes.
+1. `engineer-orientation.md` — project context, canonical stage vocabulary, and section 20 (capability engineering layer connection).
+2. `excavation.md` — session summary, candidate concepts, rationalization notes, and capability engineering layer relationships.
 3. `cost-accounting-and-classification-retention.md` — original session motivation and three-ledger cost model.
 4. `global-coherence-map-note.md` — core modularization coherence risk.
 5. `design-atlas-related-work-survey.md` — prior concept synthesis and Atlas component analysis.
 6. `federated-graphs-and-project-local-forge.md` — cross-repo architecture and federation model.
 7. `index.jsonld` — machine-readable session record with concept metadata, rationalization flags, and citation quality.
-8. This file — multi-model challenge loop prompts.
+8. Foundational concepts on main: `capability-engineering-framework`, `world-specification`, `capability-trials`, `actionable-intent-verses`.
+9. This file — multi-model challenge loop prompts A–K.

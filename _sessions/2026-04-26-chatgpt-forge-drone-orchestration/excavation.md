@@ -232,21 +232,26 @@ Proposed rule:
    Plan drone creates implementation plan.
 
 8. Handoff
-   Handoff drone creates Codex / Claude Code prompt.
+   Handoff drone creates Capability Trial Pack (not a prose prompt).
+   Human reviews and approves the trial pack before dispatch.
 
 9. Dispatch
-   Execution drone applies change on branch.
+   Execution drone receives instruction: make all trials in this pack pass.
 
 10. Verify
-   Test/drift drones compare implementation to frozen intent.
+    Verification drone executes the trial pack against the world specification.
+    Evidence objects are produced and preserved.
 
 11. Reconcile
-   Forge updates concepts, indexes, ADRs, packets, PR notes.
+    Forge updates concepts, indexes, ADRs, packets, PR notes.
+    Failed trials feed back as Refinement objects targeting capability, world, or implementation.
 ```
 
-Key design requirement:
+Key design requirements:
 
 > The output of each phase is a durable artifact, not an ephemeral chat message.
+
+> The handoff artifact is a human-approved Capability Trial Pack. The execution drone's instruction is "make all trials pass," not "build me a thing."
 
 ---
 
@@ -286,8 +291,8 @@ The proposed first MVP would not implement a full swarm. It would start with fiv
 
 1. Index drone
 2. Packet drone
-3. Handoff drone
-4. Verification drone
+3. Handoff drone (produces Capability Trial Pack, not prose prompt)
+4. Verification drone (executes trial pack against world specification)
 5. Cost governor drone
 
 The MVP goal:
@@ -303,8 +308,9 @@ repo/design goal
 → bounded packet
 → frontier review
 → frozen plan
-→ Codex/Claude Code handoff
-→ verification
+→ Capability Trial Pack (human-approved)
+→ execution drone: make all trials pass
+→ trial pack verification
 → GitHub reconciliation
 ```
 
@@ -353,8 +359,11 @@ This design appears related to, but not identical with, existing Forge concepts:
 | `forge-guidance-engine` | Drones may become execution machinery for guidance outputs |
 | `stage-aware-guided-advancement` | Drone escalation could be stage-aware |
 | `evaluation-trust-plane` | Cost governor, verification, and drift drones may contribute to trust/evaluation layer |
-| `actionable-intent-verses` | Drone handoffs and dispatch artifacts may be actionable intent verses |
+| `actionable-intent-verses` | Handoff artifacts are actionable intent verses; the Narrative/Intent split maps to Gherkin scenario text / step definitions |
 | `human-as-message-bus` | *Motivates* → `subscription-cognition-api-logistics`; the design pressure this entire layer is a response to |
+| `capability-engineering-framework` | **Foundational.** The drone handoff and verification layer sits on top of this formalized framework. Handoff artifacts are Capability Trial Packs; the verification drone executes trials against World Specifications; the six-object model (Capability, World, Invariant, Trial, Evidence, Refinement) governs the implementation workflow |
+| `world-specification` | **Foundational.** World Specifications define the environmental assumptions that trial packs exercise. The three-drift diagnostic (implementation/design/world drift) governs how verification drone failures are classified and routed to Refinement |
+| `capability-trials` | **Foundational.** The verification drone executes Capability Trial Packs — not generic tests. The spec-first principle (trials authored and human-approved before execution agent is dispatched) is a named workflow gate. Gherkin (Given/When/Then) is the candidate trial expression format |
 
 Review task: determine whether the new concepts should become formalized concepts, parked design threads, amendments to existing concepts, or a new Forge subsystem design.
 
@@ -374,32 +383,14 @@ Review task: determine whether the new concepts should become formalized concept
 10. What is the boundary between Forge preserving design artifacts and Forge actively orchestrating implementation work?
 11. Should drone outputs be immutable once committed, like session records, or mutable working artifacts?
 12. What proof would show that drones reduce human message-bus burden without causing uncontrolled API spend?
+13. Should Gherkin (Given/When/Then) be adopted as the canonical expression format for Capability Trial Packs? This decision affects handoff drone output format, verification drone tooling, and the connection to `actionable-intent-verses`.
+14. What is the minimum World Specification required before a handoff drone can be dispatched? Can a trial pack exist without a backing World Specification?
 
 ---
 
 ## Review Prompts for Other Models
 
-Use these prompts to challenge and rationalize this design before implementation.
-
-### Review Prompt A — Architectural Fit
-
-> Review the proposed Forge drone orchestration layer. Does it fit Forge's stated identity as a semantic knowledge lifecycle system, or does it overextend Forge into general agent orchestration? Identify which parts belong in Forge Core, which parts belong in a downstream operational package, and which parts should remain parked.
-
-### Review Prompt B — Concept Rationalization
-
-> Compare the candidate concepts from this session against existing Forge concepts such as `human-ai-role-separation`, `challenge-loop-methodology`, `multi-model-deliberation-roles`, `forge-guidance-engine`, and `evaluation-trust-plane`. Which concepts are genuinely new, which are refinements, and which are duplicate framings? In particular, resolve the boundary between `forge-housekeeping-workers` and `forge-drone-coordination-layer`.
-
-### Review Prompt C — Economic Model
-
-> Evaluate the proposed cost-class governance model: Green, Yellow, Red, Black. Is this sufficient to prevent accidental API cost blowouts while preserving high-quality frontier design review? What budget, logging, and approval primitives are missing?
-
-### Review Prompt D — Local-First Drones
-
-> Assess the proposal to use local models and local compute for housekeeping drones. Which drone tasks are safe for local models? Which require API or frontier escalation? What confidence and validation mechanisms are required?
-
-### Review Prompt E — MVP Scope
-
-> Evaluate the proposed five-drone MVP: Index, Packet, Handoff, Verification, and Cost Governor. Is this the right minimal set to remove the user as human message bus for design-to-implementation handoff? What should be added, removed, or deferred?
+See `review-prompts.md` in this session directory for consolidated challenge-loop prompts including Prompt K (Capability Engineering Layer Integration).
 
 ---
 
@@ -413,6 +404,7 @@ Use these prompts to challenge and rationalize this design before implementation
 | Cost governor implementation | After job schema and model tier vocabulary are defined |
 | Local model selection | When GB10/local hardware environment is available and target tasks are benchmarked |
 | API billing estimator (full implementation) | When subscription/API hybrid operation begins and real logs are available. Note: a prototype interactive estimator was produced as a Claude.ai artifact on 2026-04-26 as an output of `subscription-api-equivalent-usage-estimation`. That artifact should be preserved and linked when an `OutputArtifact` record is established for this concept. |
+| Trial expression format decision | Before first trial pack schema is designed. Gherkin is the candidate. See `capability-trials` open questions. |
 
 ---
 

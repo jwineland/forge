@@ -375,12 +375,13 @@ Suggested review tasks:
 3. Read this orientation document.
 4. Read `excavation.md` in this same session directory — session summary, candidate concepts, and rationalization notes including pre-promotion gates on overlapping concepts.
 5. Read `cost-accounting-and-classification-retention.md` in this session directory — the original cost-architecture motivation, three-ledger model, and usage classification scheme.
-6. Read `review-prompts.md` in this session directory — consolidated challenge-loop prompts (A–J) and recommended review order for multi-model review.
+6. Read `review-prompts.md` in this session directory — consolidated challenge-loop prompts (A–K) and recommended review order for multi-model review.
 7. Review whether the proposed drone layer belongs in Forge Core, a Forge Operations package, or project-specific tooling.
 8. Identify the smallest useful schema set for:
    - design packet
    - drone job
-   - prompt/handoff artifact
+   - Capability Trial Pack (handoff artifact)
+   - world specification instance (backing the trial pack)
    - implementation plan
    - review/challenge output
 9. Propose an MVP implementation sequence that preserves current Forge invariants.
@@ -423,9 +424,10 @@ Candidate workflow:
 5. Capture model review results.
 6. Rationalize into a frozen design decision.
 7. Generate an implementation plan.
-8. Generate a Codex/Claude Code handoff prompt.
-9. Preserve all artifacts in GitHub.
-10. Verify implementation result against the frozen plan.
+8. Generate a Capability Trial Pack (human-approved before dispatch).
+9. Dispatch execution drone: make all trials pass.
+10. Preserve all artifacts in GitHub.
+11. Verify implementation by running the trial pack against the world specification.
 ```
 
 This MVP should likely use existing GitHub/file mechanics first, with explicit human approval gates, before adding autonomous dispatch.
@@ -451,3 +453,44 @@ excavate → qualify → rationalize → weave → formalize → plan → dispat
 Challenge loops operate as a cross-cutting method across qualification, rationalization, and formalization — not as a discrete stage.
 
 The human remains responsible for intent, judgment, and authorization. Frontier models provide high-value critique and synthesis. Drones maintain continuity, structure, and operational hygiene.
+
+---
+
+## 20. Capability Engineering Layer: Foundation for Drone Handoff and Verification
+
+The drone handoff and verification design in this branch connects to an existing **formalized** Forge capability engineering layer. New engineers must understand this before designing drone verification mechanisms or handoff artifact schemas, to avoid building a parallel system that conflicts with existing formalized concepts.
+
+### Three formalized concepts on main that govern this layer
+
+**`capability-engineering-framework`** — defines six primary objects: Capability, World, Invariant, Trial, Evidence, Refinement. Key principles:
+- Verification is not code review; it is trial execution that produces evidence objects.
+- The engineering lifecycle ends with "observe divergence, refine world model or capability spec or implementation" — not "tests pass, ship."
+- As AI generates implementation, the center of engineering gravity shifts from code authorship to capability definition, world modeling, invariant specification, and trial-based validation.
+
+**`world-specification`** — defines the environmental model a capability must operate against: entities, states, constraints, failure conditions, and semantics. Introduces the three-drift diagnostic framework:
+- *Implementation drift* — code does not match spec
+- *Design drift* — spec does not match intent
+- *World drift* — environmental assumptions were wrong
+
+Each drift type has a different Refinement path. The verification drone must produce evidence specific enough to distinguish between them.
+
+**`capability-trials`** — defines trial packs (Normal Operation, Adversarial, Degradation, Human Reality), the spec-first principle, boundary vs. internal trial distinction, and Gherkin as a candidate expression format. The spec-first principle is especially important:
+
+> Trials are authored *before* the execution agent is dispatched, not after.
+
+The failure mode of dispatching first is the **self-confirming loop**: the execution agent generates code and tests from the same context, and the tests confirm the agent's interpretation rather than the human's intent. A human-approved trial pack pre-existing dispatch breaks this loop.
+
+### Implications for drone design
+
+| Drone | Revised understanding |
+|---|---|
+| Handoff drone | Produces a **Capability Trial Pack**, not a prose prompt. Output is expressed in Gherkin or equivalent format. Human reviews and approves the pack before dispatch. |
+| Verification drone | Executes the **Capability Trial Pack against a World Specification**. Produces Evidence objects. Failed trials are routed to Refinement with drift classification. |
+| Execution drone | Receives instruction: **"make all trials in this pack pass."** Not: "build me a thing." |
+| Packet drone | May need to include relevant World Specification state when building context packets for frontier review. |
+
+### Connection to BDD
+
+Given/When/Then (Gherkin, as used in Behavior-Driven Development) is a proven human-readable format for expressing Capability Trial Packs. The `Given` clause maps to a World Specification state instance; `When` to a capability invocation; `Then` to invariant assertions. This is the same Narrative/Intent split as `actionable-intent-verses`, but applied to trial expressions rather than verse content modules.
+
+The decision whether to adopt Gherkin as the canonical trial expression format is an open question in `capability-trials` and should be resolved before the first trial pack schema is designed.
