@@ -1,0 +1,170 @@
+{
+  "@context": "../../_vocabulary/forge-context.jsonld",
+  "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration",
+  "@type": "Session",
+  "sessionId": "2026-04-26-chatgpt-forge-drone-orchestration",
+  "platform": "ChatGPT",
+  "date": "2026-04-26",
+  "context": "Forge design; subscription/API cost architecture; drone-worker orchestration; GitHub/MCP-mediated design and implementation workflow",
+  "excavationType": "manual-design-capture",
+  "status": "design-input-for-review",
+  "threads": [
+    {
+      "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:subscription-api-equivalence",
+      "@type": "Thread",
+      "threadId": "subscription-api-equivalence",
+      "description": "Estimating what subscription usage would cost under API billing"
+    },
+    {
+      "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:usage-shape-analysis",
+      "@type": "Thread",
+      "threadId": "usage-shape-analysis",
+      "description": "Characterizing the user's real usage as design development, artifact cycling, tool calling, GitHub/MCP, and implementation handoff"
+    },
+    {
+      "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:cost-architecture",
+      "@type": "Thread",
+      "threadId": "cost-architecture",
+      "description": "Reframing the problem from metering to cost architecture and model tiering"
+    },
+    {
+      "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:hybrid-subscription-api-model",
+      "@type": "Thread",
+      "threadId": "hybrid-subscription-api-model",
+      "description": "Subscription frontier cognition plus API/local automation for logistics"
+    },
+    {
+      "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:forge-housekeeping-workers",
+      "@type": "Thread",
+      "threadId": "forge-housekeeping-workers",
+      "description": "Extension of Forge from concept preservation/classification into low-cost worker support"
+    },
+    {
+      "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration",
+      "@type": "Thread",
+      "threadId": "drone-orchestration",
+      "description": "Treating workers as drones with local/API/subscription capability tiers and escalation paths"
+    },
+    {
+      "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration:design-capture-meta",
+      "@type": "Thread",
+      "threadId": "design-capture-meta",
+      "description": "Capturing this discussion into Forge as design input for Forge itself"
+    }
+  ],
+  "candidateConcepts": [
+    {
+      "@id": "forge:concept:subscription-api-equivalent-usage-estimation",
+      "@type": "Concept",
+      "conceptId": "subscription-api-equivalent-usage-estimation",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:subscription-api-equivalence:exchange-1"
+    },
+    {
+      "@id": "forge:concept:session-based-cost-modeling",
+      "@type": "Concept",
+      "conceptId": "session-based-cost-modeling",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:usage-shape-analysis:exchange-2"
+    },
+    {
+      "@id": "forge:concept:artifact-cycle-as-cost-unit",
+      "@type": "Concept",
+      "conceptId": "artifact-cycle-as-cost-unit",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:usage-shape-analysis:exchange-3"
+    },
+    {
+      "@id": "forge:concept:human-as-message-bus",
+      "@type": "Concept",
+      "conceptId": "human-as-message-bus",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:hybrid-subscription-api-model:exchange-4"
+    },
+    {
+      "@id": "forge:concept:subscription-cognition-api-logistics",
+      "@type": "Concept",
+      "conceptId": "subscription-cognition-api-logistics",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:hybrid-subscription-api-model:exchange-5"
+    },
+    {
+      "@id": "forge:concept:frontier-design-court",
+      "@type": "Concept",
+      "conceptId": "frontier-design-court",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:cost-architecture:exchange-6"
+    },
+    {
+      "@id": "forge:concept:bounded-context-packet",
+      "@type": "Concept",
+      "conceptId": "bounded-context-packet",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:cost-architecture:exchange-7"
+    },
+    {
+      "@id": "forge:concept:forge-housekeeping-workers",
+      "@type": "Concept",
+      "conceptId": "forge-housekeeping-workers",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:forge-housekeeping-workers:exchange-8"
+    },
+    {
+      "@id": "forge:concept:drone-cost-class-governance",
+      "@type": "Concept",
+      "conceptId": "drone-cost-class-governance",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-9"
+    },
+    {
+      "@id": "forge:concept:local-first-drone-escalation",
+      "@type": "Concept",
+      "conceptId": "local-first-drone-escalation",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-10"
+    },
+    {
+      "@id": "forge:concept:github-as-drone-message-bus",
+      "@type": "Concept",
+      "conceptId": "github-as-drone-message-bus",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-11"
+    },
+    {
+      "@id": "forge:concept:design-packet-freeze",
+      "@type": "Concept",
+      "conceptId": "design-packet-freeze",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-12"
+    },
+    {
+      "@id": "forge:concept:forge-drone-coordination-layer",
+      "@type": "Concept",
+      "conceptId": "forge-drone-coordination-layer",
+      "status": "excavated",
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:design-capture-meta:exchange-13"
+    }
+  ],
+  "openQuestions": [
+    "Is drone the right term, or should Forge use worker, agent, operator, tasklet, or another vocabulary term?",
+    "Does the drone layer belong in Forge Core, a Forge Operations layer, a separate project template, or downstream consumer repos?",
+    "What is the minimal schema for a drone job?",
+    "How should Forge represent local vs API vs subscription-surface model execution?",
+    "How should cost-class governance interact with concept lifecycle states?",
+    "Should bounded context packets be first-class Forge artifacts?",
+    "Is human-as-message-bus a problem concept, an anti-pattern, or a named design pressure?",
+    "How should GitHub be represented: message bus, state substrate, authority repository, or dispatch surface?",
+    "How should Forge capture model-to-model review outputs when some review occurs in subscription UI surfaces outside the API?",
+    "What is the boundary between Forge preserving design artifacts and Forge actively orchestrating implementation work?",
+    "Should drone outputs be immutable once committed, like session records, or mutable working artifacts?",
+    "What proof would show that drones reduce human message-bus burden without causing uncontrolled API spend?"
+  ],
+  "deferredItems": [
+    "Full drone schema",
+    ".forge/ operational workspace layout",
+    "Automated dispatch implementation",
+    "Cost governor implementation",
+    "Local model selection",
+    "API billing estimator"
+  ]
+}
