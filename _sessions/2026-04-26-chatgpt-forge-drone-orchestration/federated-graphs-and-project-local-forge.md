@@ -103,6 +103,27 @@ It answers:
 - What is currently coherent, incoherent, unresolved, or drifted?
 - What is ready for implementation dispatch?
 
+### 4.1 Artifact Immutability Policy
+
+The Forge primary registry enforces an append-only policy for session records. The project-local `.forge/` layer contains artifacts with different mutability requirements, and a policy must be defined before implementation.
+
+Proposed artifact classes by mutability:
+
+| Artifact type | Mutability posture | Rationale |
+|---|---|---|
+| `decisions/` (ADRs) | **Immutable after commitment** — superseding decisions create new records | Design decisions are governance artifacts; retroactive editing destroys audit trail |
+| `reviews/` | **Immutable after commitment** — review outputs are evidence | Changing a review after the fact undermines the trust and evaluation plane |
+| `plans/` | **Versioned mutable** — plans evolve, but prior versions should be retained | Implementation plans change as understanding improves; history matters for reconciliation |
+| `packets/` | **Ephemeral / regeneratable** — packets are derived from source artifacts | Packets should be regenerable from graph state; treating them as authoritative is a drift risk |
+| `handoffs/` | **Immutable after dispatch** — once dispatched, a handoff is a record of what was sent | Mutating a dispatched handoff breaks traceability between intent and implementation |
+| `jobs/` | **Mutable during execution, immutable after completion** | Active jobs need state updates; completed jobs are execution evidence |
+| `reports/` | **Versioned mutable** — reports are point-in-time snapshots | Drift reports should be replaced, not edited; prior reports are historical record |
+| `concepts/` (local realizations) | **Versioned mutable with lineage** — local concepts evolve but must preserve derivation chain | Same pattern as primary registry concept progression |
+
+Key principle: **artifacts that serve as evidence or governance records should be immutable after commitment; artifacts that serve as working state should be versioned with history.**
+
+This policy must be formalized before `.forge/` is implemented. Open question 11 in `excavation.md` directly addresses this: "Should drone outputs be immutable once committed, like session records, or mutable working artifacts?" This section proposes a per-artifact-class answer as a starting point for rationalization.
+
 ---
 
 ## 5. Situated Concept Realizations
@@ -243,6 +264,8 @@ Candidate links:
 | `supersedes` | Later concept/design/decision replaces earlier one |
 | `conflictsWith` | Concepts or project realizations are in unresolved tension |
 
+Note: `divergesFrom` and `supersedes` have distinct semantics. `divergesFrom` records an intentional local adaptation where the source concept remains valid and unchanged; `supersedes` records replacement where the earlier artifact is no longer the authoritative version. These must not be conflated.
+
 Review question: which of these already exist in `_vocabulary/forge-context.jsonld`, which should be added, and which should remain informal until implementation?
 
 ---
@@ -349,7 +372,7 @@ Requirement:
 
 Forge may eventually need a registry of known elevated projects.
 
-Example:
+Example (illustrative only — format is YAML for readability; authoritative format will be JSON-LD):
 
 ```yaml
 projects:
@@ -363,7 +386,7 @@ projects:
     atlas: .forge/atlas.md
 ```
 
-Each project may also need an imports file:
+Each project may also need an imports file (illustrative YAML; authoritative format TBD):
 
 ```yaml
 imports:
@@ -376,6 +399,8 @@ imports:
 ```
 
 This enables traceability without forcing every project artifact into the primary Forge repo.
+
+**Format note:** The YAML examples above are illustrative only. The rest of Forge uses JSON-LD for machine-readable artifacts (`index.jsonld`, `forge-context.jsonld`). The authoritative format for project registry and import records should be JSON-LD to maintain consistency with the vocabulary toolchain. If a human-editable YAML format is also adopted for project configuration, the authority relationship between that YAML and the JSON-LD concept graph must be explicitly defined — specifically, which format is authoritative in the event of conflict, and which is derived. This design decision must be made before implementation to prevent the creation of a conflicting YAML toolchain.
 
 ---
 
@@ -454,6 +479,8 @@ This design note relates strongly to:
 10. What vocabulary additions are required for federation?
 11. How does this model avoid making Forge a monorepo for all project knowledge?
 12. How does this model avoid losing global reusable learning inside project-local details?
+13. What is the authoritative format for project registry and import records — JSON-LD, YAML, or both with a defined authority relationship?
+14. What is the per-artifact immutability policy for `.forge/` artifact types? See section 4.1 for a proposed starting position.
 
 ---
 
@@ -484,7 +511,7 @@ Federation / Synchronization
   drift reports
 ```
 
-Do not implement the full federation mechanism yet. First, rationalize the artifact model, namespace scheme, and authority chain with human and multi-model review.
+Do not implement the full federation mechanism yet. First, rationalize the artifact model, namespace scheme, authority chain, format choices, and immutability policy with human and multi-model review.
 
 ---
 

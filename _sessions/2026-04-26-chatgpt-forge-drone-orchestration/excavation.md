@@ -5,6 +5,7 @@
 **Date:** 2026-04-26  
 **Context:** Forge design; subscription/API cost architecture; drone-worker orchestration; GitHub/MCP-mediated design and implementation workflow  
 **Excavation type:** Manual design capture — automated excavation not yet available  
+**Citation quality:** Approximate — exchange numbers are reconstructed from this session summary, not a full transcript import. Thread-level citations are reliable; exchange numbers should be treated as approximate until transcript-exact data is available. See the Forge citation spec for quality tier definitions.  
 **Status:** Design input for review, challenge, rationalization, and possible incorporation. Not an implementation directive.  
 **Note:** Exchange numbers are approximate because this is a manually captured session summary rather than a full transcript import.
 
@@ -91,9 +92,25 @@ Forge already exists to preserve concepts, classify them, retain lineage, and su
 | forge-housekeeping-workers | excavated | forge-housekeeping-workers | `forge:2026-04-26-chatgpt-forge-drone-orchestration:forge-housekeeping-workers:exchange-8` |
 | drone-cost-class-governance | excavated | drone-orchestration | `forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-9` |
 | local-first-drone-escalation | excavated | drone-orchestration | `forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-10` |
-| github-as-drone-message-bus | excavated | drone-orchestration | `forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-11` |
+| github-as-shared-state-substrate | excavated | drone-orchestration | `forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-11` |
 | design-packet-freeze | excavated | drone-orchestration | `forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-12` |
 | forge-drone-coordination-layer | excavated | design-capture-meta | `forge:2026-04-26-chatgpt-forge-drone-orchestration:design-capture-meta:exchange-13` |
+
+### Rationalization Notes
+
+**Concept boundary overlap requiring pre-promotion rationalization:**
+
+`forge-housekeeping-workers` (exchange-8) and `forge-drone-coordination-layer` (exchange-13) have substantially overlapping scope. The first covers the extension of Forge into low-cost worker support; the second covers the coordination mechanism for those workers. The boundary between execution workers and coordination layer is not yet clearly defined. Before either concept is promoted to qualification, a rationalization task should resolve whether these are:
+
+1. Two distinct concepts (execution vs. coordination concerns),
+2. A single `forge-operational-layer` concept with coordination as a sub-concern, or
+3. A primary concept and a derivative.
+
+This ambiguity should not block excavation-stage capture, but must be resolved before formalization.
+
+**Causal linkage note:**
+
+`human-as-message-bus` is the named design pressure that motivates `subscription-cognition-api-logistics`. These are cause and architectural response. During rationalization, the concept records should encode an explicit `motivatedBy` or `addressesPressure` relationship so they are not treated as independent concepts.
 
 ---
 
@@ -337,6 +354,7 @@ This design appears related to, but not identical with, existing Forge concepts:
 | `stage-aware-guided-advancement` | Drone escalation could be stage-aware |
 | `evaluation-trust-plane` | Cost governor, verification, and drift drones may contribute to trust/evaluation layer |
 | `actionable-intent-verses` | Drone handoffs and dispatch artifacts may be actionable intent verses |
+| `human-as-message-bus` | *Motivates* → `subscription-cognition-api-logistics`; the design pressure this entire layer is a response to |
 
 Review task: determine whether the new concepts should become formalized concepts, parked design threads, amendments to existing concepts, or a new Forge subsystem design.
 
@@ -351,7 +369,7 @@ Review task: determine whether the new concepts should become formalized concept
 5. How should cost-class governance interact with concept lifecycle states?
 6. Should bounded context packets be first-class Forge artifacts?
 7. Is `human-as-message-bus` a problem concept, an anti-pattern, or a named design pressure?
-8. How should GitHub be represented: message bus, state substrate, authority repository, or dispatch surface?
+8. How should GitHub be represented: shared state substrate, authority repository, or dispatch surface? (Note: GitHub is a substrate that *replaces* the human message bus, not a message bus itself. See concept `github-as-shared-state-substrate`.)
 9. How should Forge capture model-to-model review outputs when some review occurs in subscription UI surfaces outside the API?
 10. What is the boundary between Forge preserving design artifacts and Forge actively orchestrating implementation work?
 11. Should drone outputs be immutable once committed, like session records, or mutable working artifacts?
@@ -369,7 +387,7 @@ Use these prompts to challenge and rationalize this design before implementation
 
 ### Review Prompt B — Concept Rationalization
 
-> Compare the candidate concepts from this session against existing Forge concepts such as `human-ai-role-separation`, `challenge-loop-methodology`, `multi-model-deliberation-roles`, `forge-guidance-engine`, and `evaluation-trust-plane`. Which concepts are genuinely new, which are refinements, and which are duplicate framings?
+> Compare the candidate concepts from this session against existing Forge concepts such as `human-ai-role-separation`, `challenge-loop-methodology`, `multi-model-deliberation-roles`, `forge-guidance-engine`, and `evaluation-trust-plane`. Which concepts are genuinely new, which are refinements, and which are duplicate framings? In particular, resolve the boundary between `forge-housekeeping-workers` and `forge-drone-coordination-layer`.
 
 ### Review Prompt C — Economic Model
 
@@ -394,7 +412,7 @@ Use these prompts to challenge and rationalize this design before implementation
 | Automated dispatch implementation | After design review and rationalization complete |
 | Cost governor implementation | After job schema and model tier vocabulary are defined |
 | Local model selection | When GB10/local hardware environment is available and target tasks are benchmarked |
-| API billing estimator | When subscription/API hybrid operation begins and real logs are available |
+| API billing estimator (full implementation) | When subscription/API hybrid operation begins and real logs are available. Note: a prototype interactive estimator was produced as a Claude.ai artifact on 2026-04-26 as an output of `subscription-api-equivalent-usage-estimation`. That artifact should be preserved and linked when an `OutputArtifact` record is established for this concept. |
 
 ---
 

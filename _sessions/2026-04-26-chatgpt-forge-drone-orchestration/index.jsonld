@@ -1,5 +1,7 @@
 {
   "@context": "../../_vocabulary/forge-context.jsonld",
+  "_contextNote": "The @context path above is relative and assumes a fixed two-level depth from the vocabulary root. This is a structural invariant documented in _sessions/README.md. If sessions are reorganized or referenced from a different depth, this path must be updated. A stable absolute URI should be used once Forge publishes its vocabulary at a canonical URL.",
+  "_schemaNote": "candidateConcepts use @type: Concept with status: excavated. In this schema, Concept is the correct type regardless of lifecycle stage; the status field encodes maturity. This convention should be stated explicitly in the vocabulary or README to prevent confusion between excavated candidates and formalized concepts. The openQuestions and deferredItems arrays use flat strings; these should be migrated to structured objects (with IDs, owners, and trigger conditions) when programmatic querying is required.",
   "@id": "forge:2026-04-26-chatgpt-forge-drone-orchestration",
   "@type": "Session",
   "sessionId": "2026-04-26-chatgpt-forge-drone-orchestration",
@@ -7,6 +9,8 @@
   "date": "2026-04-26",
   "context": "Forge design; subscription/API cost architecture; drone-worker orchestration; GitHub/MCP-mediated design and implementation workflow",
   "excavationType": "manual-design-capture",
+  "citationQuality": "approximate",
+  "citationQualityNote": "Exchange numbers are reconstructed from a session summary, not a full transcript import. Thread-level citations are reliable. Exchange-level citations should be treated as approximate until transcript-exact data is available.",
   "status": "design-input-for-review",
   "threads": [
     {
@@ -58,7 +62,15 @@
       "@type": "Concept",
       "conceptId": "subscription-api-equivalent-usage-estimation",
       "status": "excavated",
-      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:subscription-api-equivalence:exchange-1"
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:subscription-api-equivalence:exchange-1",
+      "outputArtifacts": [
+        {
+          "artifactId": "claude-api-cost-estimator-2026-04-26",
+          "type": "InteractivePrototype",
+          "description": "Interactive React-based API cost estimator produced as a Claude.ai artifact on 2026-04-26. Calibrated to actual user usage profile (4-7 sessions/day, long architecture deep-dives, Sonnet 4.6). Should be preserved and formally linked when an OutputArtifact record is established for this concept.",
+          "status": "prototype-unpreserved"
+        }
+      ]
     },
     {
       "@id": "forge:concept:session-based-cost-modeling",
@@ -86,7 +98,9 @@
       "@type": "Concept",
       "conceptId": "subscription-cognition-api-logistics",
       "status": "excavated",
-      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:hybrid-subscription-api-model:exchange-5"
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:hybrid-subscription-api-model:exchange-5",
+      "motivatedBy": "forge:concept:human-as-message-bus",
+      "relationshipNote": "human-as-message-bus is the named design pressure; subscription-cognition-api-logistics is the architectural response. These are cause and response and should be explicitly linked in concept records at rationalization stage."
     },
     {
       "@id": "forge:concept:frontier-design-court",
@@ -107,7 +121,8 @@
       "@type": "Concept",
       "conceptId": "forge-housekeeping-workers",
       "status": "excavated",
-      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:forge-housekeeping-workers:exchange-8"
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:forge-housekeeping-workers:exchange-8",
+      "rationalizationNote": "Boundary overlap with forge-drone-coordination-layer (exchange-13) must be resolved before either concept is promoted to qualification. See excavation.md Rationalization Notes."
     },
     {
       "@id": "forge:concept:drone-cost-class-governance",
@@ -124,11 +139,12 @@
       "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-10"
     },
     {
-      "@id": "forge:concept:github-as-drone-message-bus",
+      "@id": "forge:concept:github-as-shared-state-substrate",
       "@type": "Concept",
-      "conceptId": "github-as-drone-message-bus",
+      "conceptId": "github-as-shared-state-substrate",
       "status": "excavated",
-      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-11"
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:drone-orchestration:exchange-11",
+      "nameRationale": "GitHub is the shared state substrate that replaces the human as message bus — not a message bus itself. The prior name github-as-drone-message-bus was semantically inverted and has been corrected."
     },
     {
       "@id": "forge:concept:design-packet-freeze",
@@ -142,7 +158,8 @@
       "@type": "Concept",
       "conceptId": "forge-drone-coordination-layer",
       "status": "excavated",
-      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:design-capture-meta:exchange-13"
+      "citation": "forge:2026-04-26-chatgpt-forge-drone-orchestration:design-capture-meta:exchange-13",
+      "rationalizationNote": "Boundary overlap with forge-housekeeping-workers (exchange-8) must be resolved before either concept is promoted to qualification. See excavation.md Rationalization Notes."
     }
   ],
   "openQuestions": [
@@ -153,7 +170,7 @@
     "How should cost-class governance interact with concept lifecycle states?",
     "Should bounded context packets be first-class Forge artifacts?",
     "Is human-as-message-bus a problem concept, an anti-pattern, or a named design pressure?",
-    "How should GitHub be represented: message bus, state substrate, authority repository, or dispatch surface?",
+    "How should GitHub be represented as a shared state substrate vs. a dispatch surface vs. an authority repository?",
     "How should Forge capture model-to-model review outputs when some review occurs in subscription UI surfaces outside the API?",
     "What is the boundary between Forge preserving design artifacts and Forge actively orchestrating implementation work?",
     "Should drone outputs be immutable once committed, like session records, or mutable working artifacts?",
@@ -165,6 +182,6 @@
     "Automated dispatch implementation",
     "Cost governor implementation",
     "Local model selection",
-    "API billing estimator"
+    "API billing estimator (full implementation — prototype artifact exists, unpreserved, from 2026-04-26 Claude.ai session)"
   ]
 }

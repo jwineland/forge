@@ -29,11 +29,15 @@ Forge is a semantic knowledge lifecycle system for extracting, preserving, chall
 Forge already has mechanisms and conventions for:
 
 1. **Excavation** — capturing valuable concepts and design threads from conversations.
-2. **Classification** — labeling and organizing concepts with metadata, provenance, status, and relationships.
-3. **Elevation / Formalization** — developing concepts through challenge loops, rationalization, metadata enrichment, and association with other concepts.
-4. **Parking** — preserving concepts that are important but premature, with trigger conditions for future revival.
-5. **Promotion / Reuse** — moving concepts into specific project corpora or reusing them across projects.
-6. **Session provenance** — preserving citation addresses and session indices so concepts can be traced back to the conversation where they emerged.
+2. **Qualification** — labeling and organizing concepts with metadata, provenance, status, and relationships; applying challenge loops to test and refine them.
+3. **Rationalization** — developing concepts through structured analysis, resolving conflicts, and establishing well-grounded positions.
+4. **Formalization** — producing complete, well-structured concept records with full metadata, relationships, and supporting evidence.
+5. **Operationalization** — applying formalized concepts in production workflows, projects, and implementations.
+6. **Parking** — preserving concepts that are important but premature, with trigger conditions for future revival.
+7. **Promotion / Reuse** — moving concepts into specific project corpora or reusing them across projects.
+8. **Session provenance** — preserving citation addresses and session indices so concepts can be traced back to the conversation where they emerged.
+
+The canonical stage-gated progression is: **Excavation → Qualification → Rationalization → Formalization → Operationalization**. Challenge loops are a cross-cutting *method* applied at Qualification, Rationalization, and Formalization — not a discrete stage.
 
 The Forge repo itself is the default general concept registry, but the mechanisms are intended to apply to any project that is being elevated, not only Forge.
 
@@ -108,11 +112,13 @@ Open question: whether designs should be represented as first-class Forge artifa
 
 ## 7. Implementation Planning as a First-Class Modality
 
-Forge must also support implementation planning with the same general pattern used for concepts and designs:
+Forge must also support implementation planning following the same stage-gated progression used for concepts and designs:
 
 ```text
-excavate → classify → challenge → rationalize → formalize → operationalize
+Excavation → Qualification → Rationalization → Formalization → Operationalization
 ```
+
+Challenge loops operate across Qualification, Rationalization, and Formalization as a cross-cutting method — they are not a discrete stage.
 
 Implementation planning is not the same as implementation. It includes:
 
@@ -279,7 +285,7 @@ This is meant to prevent accidental API blowouts while preserving the design val
 
 ## 13. GitHub as Shared State Layer
 
-GitHub currently appears to be the most practical shared substrate for Forge-mediated work.
+GitHub currently appears to be the most practical **shared state substrate** for Forge-mediated work — not a message bus, but the persistent layer that eliminates the need for a human message bus.
 
 Potential roles:
 
@@ -289,7 +295,7 @@ Potential roles:
 - branch/PR review surface
 - prompt/handoff exchange layer
 - audit trail
-- partial message bus among AI surfaces
+- coordination surface among AI surfaces (replacing manual human transport)
 
 However, GitHub should not necessarily be the only state layer forever. Forge may later use databases, MCP servers, memory frameworks, custom front ends, or agent frameworks.
 
@@ -431,7 +437,15 @@ Forge should preserve and elevate meaning, not merely automate tasks.
 Drones/workers are useful only if they strengthen that lifecycle:
 
 ```text
-excavate → classify → challenge → rationalize → weave → plan → dispatch → verify → reconcile
+Excavation → Qualification → Rationalization → Formalization → Operationalization
 ```
+
+With operational extensions for design and implementation work:
+
+```text
+excavate → qualify → rationalize → weave → formalize → plan → dispatch → verify → reconcile
+```
+
+Challenge loops operate as a cross-cutting method across qualification, rationalization, and formalization — not as a discrete stage.
 
 The human remains responsible for intent, judgment, and authorization. Frontier models provide high-value critique and synthesis. Drones maintain continuity, structure, and operational hygiene.
