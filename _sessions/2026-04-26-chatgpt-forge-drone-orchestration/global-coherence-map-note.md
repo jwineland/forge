@@ -6,16 +6,6 @@
 
 ---
 
-## Relationship to Existing Forge Concepts
-
-The most directly related existing Forge concept is `manifest-as-coherence-anchor`, which already names the need for a coherence anchor across multi-file corpora and defines the MANIFEST as the place that records scope, authority chain, invariants, and design decisions.
-
-The design pressure described in this note generalizes that concept's scope: `manifest-as-coherence-anchor` addresses corpus governance coherence; the Global Coherence Map addresses design-state coherence across modular design artifacts. The Atlas or equivalent artifact may be an extension of, companion to, or derived projection from the MANIFEST-as-anchor mechanism — this relationship should be resolved during rationalization.
-
-See also `design-atlas-related-work-survey.md` in this session directory for a full survey of related existing concepts.
-
----
-
 ## Problem Statement
 
 The historical full-authority-document workflow had an important advantage: a frontier reasoning model could survey the entire design at once and identify gaps, contradictions, duplicated concepts, missing assumptions, and inconsistencies that spanned individual concept or module boundaries.
@@ -81,9 +71,8 @@ Candidate names:
 - Design Atlas
 - Design Map
 - Coherence Ledger
+- Authority Map
 - Concept-Weave Map
-
-**Rejected candidate: "Authority Map"** — In Forge vocabulary, "authority" denotes a canonical governance source (authority document, authority chain, authority repository). A Global Coherence Map is a *derived projection* over existing design state — the opposite of an authority source. Naming it "Authority Map" would create semantic tension with Forge's existing governance vocabulary and mislead models reasoning about which artifact governs which decisions. This name is rejected and should not be re-proposed.
 
 ---
 
