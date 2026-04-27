@@ -137,7 +137,7 @@ Relevant elements:
 
 **Atlas implication:**
 
-The Design Atlas likely consumes CPR entries and concept ledger state. It may be the project-level counterpart to the concept ledger: not one concept's state, but the navigable state of a design composed from many concepts.
+The Design Atlas likely consumes CPR entries and concept ledger state. It may be the project-level counterpart to the concept ledger: not one concept’s state, but the navigable state of a design composed from many concepts.
 
 Open question: Is Atlas a ledger, a projection of the ledger, or a higher-order artifact built from multiple ledgers plus design/project metadata?
 
@@ -209,7 +209,7 @@ Relevant elements:
 
 **Atlas implication:**
 
-Atlas review should not be a vague "does this look coherent?" pass. It should be governed by explicit rubrics such as:
+Atlas review should not be a vague “does this look coherent?” pass. It should be governed by explicit rubrics such as:
 
 - boundary clarity
 - dependency direction
@@ -347,16 +347,16 @@ It exists to let humans, drones/workers, and frontier models review the shape of
 
 ## 7. Candidate Atlas Components
 
-| Component | Purpose | Related prior concept | Notes |
-|---|---|---|---|
-| Design area map | Names major design regions and ownership/scope | MANIFEST as coherence anchor, OOD | |
-| Concept cluster map | Shows grouped concepts and relationships | Semantic graph, CPR | |
-| Decision map | Links ADRs/design decisions to concepts and files | MANIFEST, semantic graph | |
-| Assumption ledger | Tracks assumptions, freshness, and unresolved world claims | Concept-capability stratification | |
-| Coherence ledger | Lists tensions, conflicts, contradictions, and unresolved rationalization items | Stage-aware advancement, guidance engine | |
-| Drift report | Shows design/implementation mismatch and stale artifacts | Semantic graph, evaluation/trust plane | |
-| Frontier review digest | Compressed global packet for high-reasoning review | Challenge loops, multi-model deliberation | |
-| Completeness/coverage report | Indicates whether the Atlas is sufficient for review or planning | Completeness scoring, evaluation/trust plane | ⚠ **BLOCKED**: depends on parked `completeness-scoring-methodology`. This component cannot be designed or implemented until that concept is unparked and resolved. See Open Rationalization Question 13. |
+| Component | Purpose | Related prior concept |
+|---|---|---|
+| Design area map | Names major design regions and ownership/scope | MANIFEST as coherence anchor, OOD |
+| Concept cluster map | Shows grouped concepts and relationships | Semantic graph, CPR |
+| Decision map | Links ADRs/design decisions to concepts and files | MANIFEST, semantic graph |
+| Assumption ledger | Tracks assumptions, freshness, and unresolved world claims | Concept-capability stratification |
+| Coherence ledger | Lists tensions, conflicts, contradictions, and unresolved rationalization items | Stage-aware advancement, guidance engine |
+| Drift report | Shows design/implementation mismatch and stale artifacts | Semantic graph, evaluation/trust plane |
+| Frontier review digest | Compressed global packet for high-reasoning review | Challenge loops, multi-model deliberation |
+| Completeness/coverage report | Indicates whether the Atlas is sufficient for review or planning | Completeness scoring, evaluation/trust plane |
 
 ---
 
@@ -390,7 +390,6 @@ This suggests Atlas is neither a replacement for the graph nor merely a document
 10. Should implementation planning be blocked if Atlas coverage is insufficient?
 11. How should Atlas capture uncertainty and disagreements among models?
 12. What drones are responsible for maintaining Atlas components?
-13. **What is the dependency order between Atlas completeness/coverage reporting and the unparked `completeness-scoring-methodology`? This concept is currently parked and blocks the completeness/coverage report component (section 7). Unparking and resolving `completeness-scoring-methodology` should be treated as a prerequisite before the completeness component of Atlas is designed.**
 
 ---
 
@@ -402,7 +401,7 @@ This suggests Atlas is neither a replacement for the graph nor merely a document
 
 ### Prompt B — Minimal Viable Atlas
 
-> Define the smallest useful Design Atlas that restores whole-design coherence checking after authority-document modularization. What must it include, what can wait, and what should explicitly not be included? Note that the completeness/coverage report component is blocked on the parked `completeness-scoring-methodology` and should be excluded from the minimal viable Atlas scope.
+> Define the smallest useful Design Atlas that restores whole-design coherence checking after authority-document modularization. What must it include, what can wait, and what should explicitly not be included?
 
 ### Prompt C — Drift and Coherence Rubric
 
