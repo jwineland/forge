@@ -3,7 +3,10 @@ id: completeness-scoring-methodology
 name: Completeness Scoring Methodology
 status: formalized
 citation: forge:chatgpt-ai-tool-broker-oversight-velocity:elevation-scorecard:exchange-approx
+citation-quality: approximate
 created: 2026-04-18
+previous-status: parked
+parked-created: 2026-04-18
 unparked: 2026-04-26
 unpark-source: _intake/chatgpt-forge-sessions/AI_Tool_Broker - AI Oversight vs Velocity.md
 depends-on: [forge-concept-lifecycle, human-ai-role-separation, concept-progression-record]
@@ -14,6 +17,12 @@ promoted-into: []
 ## Summary
 
 A methodology for scoring the completeness of a concept at each lifecycle stage, enabling systematic identification of missing elements, directed iterative refinement, and a principled signal for when a concept is ready to advance. Scoring is stage-aware: different stages use different dimensions because different things must be true about a concept at each maturity level. Human judgment governs advancement; the scorecard guides and informs, but does not replace the human decision.
+
+**Formalization note:** This concept is formalized as a usable Forge methodology. The open questions preserved below concern parameterization and integration refinements — such as threshold tuning, multi-model scoring, and CPR score-history schemas — rather than blockers to using the core methodology.
+
+## Citation Quality Note
+
+The citation is approximate because the source was deposited from prior ChatGPT session material rather than transcript-exact indexed exchanges. The methodology is preserved from the deposited intake source, but the exchange address should not be treated as transcript-exact until a stable session index exists for that source material.
 
 ## Unpark Note
 
@@ -250,6 +259,8 @@ The source sessions used slash commands. Translated to Forge vocabulary:
 ---
 
 ## Open Questions
+
+The following open questions are preserved as integration and parameterization refinements. They do not block use of the core methodology as a formalized Forge concept.
 
 - Should the Qualification scorecard be the only quantitative scorecard, with other stages evaluated qualitatively? Or should Rationalization and Formalization also have structured 0–5 scorecards?
 - What is the minimum acceptable score profile for Qualification → Rationalization advancement? The current guidance (Category 10 ≥ 4, no category at 0, no blocking gap in 7 or 9) is directional — should it be more precisely specified?
