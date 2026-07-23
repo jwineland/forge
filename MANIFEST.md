@@ -138,6 +138,9 @@ Sub-verse branching rationale: when a response is regenerated or a prompt is edi
 | `_parked/boundarymark-fitness-attestation.md` | Parked concept | Current |
 | `_parked/completeness-scoring-methodology.md` | Parked concept — still parked; canvas artifact not accessible | Current |
 | `_parked/forge-naming-and-scope.md` | Parked concept | Current |
+| `_parked/agent-definition-catalog-and-distribution.md` | Parked concept — agent-definition catalog/RAG, plugin distribution, agent MCP service | Current |
+| `_sessions/2026-07-22-claude-ekion-benchcheck-and-agent-workflow/excavation.md` | Claude session excavation — ekion-benchcheck bootstrap and agent workflow | Current |
+| `_sessions/2026-07-22-claude-ekion-benchcheck-and-agent-workflow/index.jsonld` | Machine-readable session index | Current |
 | `_skills/README.md` | Placeholder for corpus-skills sync | Stub |
 
 ---
@@ -175,6 +178,7 @@ The presence of CE-focused concepts in the Forge concept registry is appropriate
 | Forge North Star artifact | Critical | A short canonical document stating what Forge is and is not. Must use domain-spanning examples, not CE-centric framing. |
 | Forge canonical concepts document | Critical | Curated list of concepts with canonical/provisional status. Referenced in ChatGPT sessions as a core anti-regression artifact. |
 | Forge stage model document | Critical | Clean single document describing each stage, inputs, outputs, exit criteria. Referenced in ChatGPT sessions. |
+| Forge Core vs. Forge Operations boundary definition | Critical | Independently surfaced twice: the 2026-04-26 drone-orchestration session (Section 17, Q1 — dispatch/drone angle) and the 2026-07-22 ekion-benchcheck agent-workflow session (agent-definition-sourcing angle, see `_parked/agent-definition-catalog-and-distribution.md`). Two unrelated projects hitting the same unresolved boundary is evidence it's real and load-bearing. May resolve as its own document, or by folding an explicit boundary statement into the Forge North Star / stage model document gaps above — that decision is itself part of the gap. |
 | Forge progression rules document | High | The non-negotiable behavioral constraints. Referenced in ChatGPT sessions. |
 | Completeness scoring methodology | High | Canvas document not accessible from ChatGPT export; partial treatment in sessions. Remains parked. |
 | AI_ARB Work Item vs CPR relationship | High | Are these the same concept or distinct? Needs resolution before either is promoted to implementation. |
@@ -183,6 +187,7 @@ The presence of CE-focused concepts in the Forge concept registry is appropriate
 | WRP full scope definition | Medium | What does the broader WRP building contain beyond the AI_ARB nucleus? |
 | AI Oversight vs Velocity session excavation | Medium | 796KB session not fully excavated; covers oversight/velocity tensions relevant to `human-ai-role-separation`. |
 | CE corpus template | Medium | A dedicated corpus template for Capability Engineering work. Will contain `_capabilities/`, `_worlds/`, `_invariants/`, `_trials/` structure and CE rubrics. Separate from Forge Core. |
+| `corpus-template-eng` scope (ADR/RFC/ARB stack) | Medium | Decided in principle in an earlier session (Forge Core stays concept-lifecycle-only; `corpus-template-eng` was slated to carry the ADR/RFC/ARB artifact stack) but never persisted here — exactly the kind of decision loss Forge exists to prevent. Recorded now during the 2026-07-22 ekion-benchcheck session when a project-scoped ADR needed reclassifying as an RFC and this gap surfaced. No repo yet exists for `corpus-template-eng`. |
 | Automated excavation Action | High | Currently manual; GitHub Action to trigger on conversation deposit. |
 | `corpus-skills` sync Action | High | `_skills/` should sync from jwineland/corpus-skills when it exists. |
 | Intent registry design | High | `_vocabulary/intent-registry.md` is a stub; needs full design session. |
