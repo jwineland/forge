@@ -1,0 +1,122 @@
+{
+  "@context": "../../_vocabulary/forge-context.jsonld",
+  "_contextNote": "The @context path above is relative and assumes a fixed two-level depth from the vocabulary root. This is a structural invariant documented in _sessions/README.md.",
+  "_schemaNote": "candidateConcepts use @type: Concept with status: excavated, except the one entry with status: parked, which is additionally recorded in full in _parked/agent-definition-catalog-and-distribution.md per that mechanism's required front matter.",
+  "@id": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow",
+  "@type": "Session",
+  "sessionId": "2026-07-22-claude-ekion-benchcheck-and-agent-workflow",
+  "platform": "Claude",
+  "date": "2026-07-22",
+  "context": "Bootstrapping ekion-benchcheck in jwineland/syscheck-uk; ADR/authority-doc process; layered AI agent workflow (AGENTS.md/CLAUDE.md/.claude/agents/agent-coach); external agent-catalog review (VoltAgent); RFC-vs-ADR scope clarification leading to use of Forge's _parked/ mechanism",
+  "excavationType": "live-session-excavation",
+  "citationQuality": "reliable-approximate",
+  "citationQualityNote": "Written by the assistant that participated in the live conversation, not reconstructed from an export or summary. Exchange numbers reflect the real turn sequence as experienced by the excavating assistant, but are hand-assigned rather than tool-extracted from a transcript index -- higher confidence than a reconstructed-export excavation, not transcript-exact.",
+  "status": "design-input-for-review",
+  "sessionDocuments": [
+    {
+      "path": "_sessions/2026-07-22-claude-ekion-benchcheck-and-agent-workflow/excavation.md",
+      "role": "primary-excavation",
+      "description": "Session summary, candidate concepts, rationalization notes, relationship to existing Forge concepts, and open questions"
+    },
+    {
+      "path": "_sessions/2026-07-22-claude-ekion-benchcheck-and-agent-workflow/index.jsonld",
+      "role": "machine-readable-index",
+      "description": "JSON-LD session record: concepts, threads, citations, and open questions"
+    }
+  ],
+  "threads": [
+    {
+      "@id": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:ekion-benchcheck-bootstrap",
+      "@type": "Thread",
+      "threadId": "ekion-benchcheck-bootstrap",
+      "description": "Repo scaffolding, ADR/authority-doc process, CapabilityAdapter framework, CI tooling, and two real incidents (stale-branch merge conflict, batch-push verification failure)"
+    },
+    {
+      "@id": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:agent-workflow-and-coach",
+      "@type": "Thread",
+      "threadId": "agent-workflow-and-coach",
+      "description": "AGENTS.md/CLAUDE.md/.claude/agents/ layered structure, five-role taxonomy, agent-coach dual auditor/tuner mandate and governance constraint"
+    },
+    {
+      "@id": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:model-effort-tiering",
+      "@type": "Thread",
+      "threadId": "model-effort-tiering",
+      "description": "Pinning model/effort per agent role, verified against official Claude Code documentation"
+    },
+    {
+      "@id": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:voltagent-catalog-review",
+      "@type": "Thread",
+      "threadId": "voltagent-catalog-review",
+      "description": "Reviewing VoltAgent's 154-agent catalog as a reference point; deciding against adopting its length/style, with reasoning recorded"
+    },
+    {
+      "@id": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:rfc-scope-clarification",
+      "@type": "Thread",
+      "threadId": "rfc-scope-clarification",
+      "description": "Recognizing project-scoped ADRs are the wrong home for meta-framework ideas; discovering and using Forge's _parked/ mechanism; identifying a second independent surfacing of the Forge-Core-vs-Operations boundary question"
+    }
+  ],
+  "candidateConcepts": [
+    {
+      "@id": "forge:concept:batch-operation-verification-discipline",
+      "@type": "Concept",
+      "conceptId": "batch-operation-verification-discipline",
+      "status": "excavated",
+      "citation": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:ekion-benchcheck-bootstrap:exchange-6",
+      "relatedTo": ["forge:concept:ai-arb-realization-system"]
+    },
+    {
+      "@id": "forge:concept:stale-branch-conflict-prevention",
+      "@type": "Concept",
+      "conceptId": "stale-branch-conflict-prevention",
+      "status": "excavated",
+      "citation": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:ekion-benchcheck-bootstrap:exchange-5",
+      "relatedTo": ["forge:concept:ai-arb-realization-system"]
+    },
+    {
+      "@id": "forge:concept:layered-agent-directive-governance",
+      "@type": "Concept",
+      "conceptId": "layered-agent-directive-governance",
+      "status": "excavated",
+      "citation": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:agent-workflow-and-coach:exchange-9",
+      "relatedTo": ["forge:concept:human-ai-role-separation", "forge:concept:multi-model-deliberation-roles"]
+    },
+    {
+      "@id": "forge:concept:repo-grounded-agent-specificity-principle",
+      "@type": "Concept",
+      "conceptId": "repo-grounded-agent-specificity-principle",
+      "status": "excavated",
+      "citation": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:voltagent-catalog-review:exchange-11",
+      "relatedTo": ["forge:concept:challenge-loop-methodology"]
+    },
+    {
+      "@id": "forge:concept:forge-core-vs-operations-boundary-recurrence",
+      "@type": "Concept",
+      "conceptId": "forge-core-vs-operations-boundary-recurrence",
+      "status": "excavated",
+      "citation": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:rfc-scope-clarification:exchange-13",
+      "rationalizationNote": "This is evidence bearing on an existing open question from the 2026-04-26-chatgpt-forge-drone-orchestration session (Section 17, Q1), not a new independent question. Rationalize alongside that session's open questions rather than as a standalone concept."
+    },
+    {
+      "@id": "forge:concept:agent-definition-catalog-and-distribution",
+      "@type": "ParkedConcept",
+      "conceptId": "agent-definition-catalog-and-distribution",
+      "status": "parked",
+      "citation": "forge:2026-07-22-claude-ekion-benchcheck-and-agent-workflow:rfc-scope-clarification:exchange-14",
+      "parkedRecord": "_parked/agent-definition-catalog-and-distribution.md",
+      "relatedTo": [
+        "forge:concept:ai-arb-realization-system",
+        "forge:concept:capability-engineering-framework"
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Should batch-operation-verification-discipline and stale-branch-conflict-prevention be formalized now, held for a third instance, or folded into ai-arb-realization-system as named failure modes?",
+    "Does the recurrence of the Forge-Core-vs-Operations boundary question (now seen from two independent projects) raise the priority of the already-Critical Forge North Star / stage model document gaps, or warrant its own Critical gap?",
+    "Should layered-agent-directive-governance be formalized as a standalone concept, or captured as a worked example attached to human-ai-role-separation and multi-model-deliberation-roles?",
+    "Does originating in a different project's repo rather than as Forge design work proper change how this session should be weighted during rationalization?"
+  ],
+  "deferredItems": [
+    "agent-definition-catalog-and-distribution (formally parked -- see _parked/ record, not this list, for its trigger condition)"
+  ]
+}
