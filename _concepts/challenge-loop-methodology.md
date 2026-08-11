@@ -18,7 +18,7 @@ Systematically reviewing a document or corpus across multiple AI platforms surfa
 ### The loop structure
 
 1. **Comprehension verification** — run first on every platform before issuing any challenge. Prevents acting on reviews based on misread content.
-2. **Persona injection with structured output** — one finding per row, not prose. Gap | Location | Severity | Finding | Proposed resolution.
+2. **Reviewer role assignment with structured output** — one finding per row, not prose. Gap | Location | Severity | Finding | Proposed resolution.
 3. **Cross-platform synthesis** — consensus gaps (2+ platforms), platform-unique findings, contradictions, prioritized action list.
 4. **Incorporation decisions** — for each finding: incorporate as proposed / incorporate with modification / reject with reason / defer. Document all rejections.
 
@@ -32,12 +32,14 @@ The independence assumption is weaker than it appears. GPT-4, Gemini, and Claude
 
 ### Integration with intent
 
-If content intent declares the decision being supported and the primary audience, the challenge loop can select the adversarial persona automatically — specifically choosing the perspective most likely missing from the authoring session.
+If content intent declares the decision being supported and the primary audience, the challenge loop can select the adversarial reviewer role automatically — specifically choosing the perspective most likely missing from the authoring session.
+
+Reviewer roles are bounded task stances for structured critique. They are not hidden system prompts, prompt-injection mechanisms, or authorization to bypass a tool's active instruction hierarchy. See `SECURITY.md`.
 
 ## Open questions
 
 - Integration with completeness scoring from ChatGPT Forge work
-- Automated persona selection from intent declarations not yet implemented
+- Automated reviewer role selection from intent declarations not yet implemented
 
 ## Promotion candidates
 
