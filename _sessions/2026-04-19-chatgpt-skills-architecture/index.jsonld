@@ -1,0 +1,117 @@
+{
+  "@context": [
+    "../_vocabulary/forge-context.jsonld",
+    {
+      "type": "@type",
+      "id": "@id",
+      "label": "rdfs:label",
+      "status": "status",
+      "citation": "citation",
+      "thread": "thread"
+    }
+  ],
+  "@graph": [
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture",
+      "type": "Session",
+      "label": "2026-04-19 ChatGPT skills architecture conversation",
+      "platform": "ChatGPT",
+      "date": "2026-04-19",
+      "context": "Forge README framing, lifecycle refinement, GitHub MCP operational discipline, skills/context/memory architecture"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:forge-positioning",
+      "type": "Thread",
+      "label": "Forge positioning",
+      "session": "forge:2026-04-19-chatgpt-skills-architecture"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:lifecycle-refinement",
+      "type": "Thread",
+      "label": "Lifecycle refinement",
+      "session": "forge:2026-04-19-chatgpt-skills-architecture"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:github-operation-discipline",
+      "type": "Thread",
+      "label": "GitHub operation discipline",
+      "session": "forge:2026-04-19-chatgpt-skills-architecture"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:skill-architecture",
+      "type": "Thread",
+      "label": "Skill architecture",
+      "session": "forge:2026-04-19-chatgpt-skills-architecture"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:memory-context-patterns",
+      "type": "Thread",
+      "label": "Memory and context patterns",
+      "session": "forge:2026-04-19-chatgpt-skills-architecture"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:forge-readme-positioning-and-status-clarification",
+      "type": "Concept",
+      "label": "Forge README positioning and status clarification",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:forge-positioning",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:forge-positioning:exchange-1"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:concept-artifact-support-hierarchy",
+      "type": "Concept",
+      "label": "Concept-artifact support hierarchy",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:forge-positioning",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:forge-positioning:exchange-4"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:promotion-as-transition-not-stage",
+      "type": "Concept",
+      "label": "Promotion as transition, not stage",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:lifecycle-refinement",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:lifecycle-refinement:exchange-2"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:github-mcp-first-operational-discipline",
+      "type": "Concept",
+      "label": "GitHub MCP-first operational discipline",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:github-operation-discipline",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:github-operation-discipline:exchange-3"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:layered-skill-loading-architecture",
+      "type": "Concept",
+      "label": "Layered skill loading architecture",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:skill-architecture",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:skill-architecture:exchange-2"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:shared-stubs-and-repo-hooks-pattern",
+      "type": "Concept",
+      "label": "Shared stubs and repo hooks pattern",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:skill-architecture",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:skill-architecture:exchange-5"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:skills-context-memory-separation",
+      "type": "Concept",
+      "label": "Skills-context-memory separation",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:memory-context-patterns",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:memory-context-patterns:exchange-2"
+    },
+    {
+      "id": "forge:2026-04-19-chatgpt-skills-architecture:chat-bound-skill-loading-model",
+      "type": "Concept",
+      "label": "Chat-bound skill loading model",
+      "status": "classified",
+      "thread": "forge:2026-04-19-chatgpt-skills-architecture:skill-architecture",
+      "citation": "forge:2026-04-19-chatgpt-skills-architecture:skill-architecture:exchange-7"
+    }
+  ]
+}
